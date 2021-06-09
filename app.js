@@ -2,14 +2,16 @@ const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
+  console.log('[hello-world] root handler called')
   res
-    .set('x-powered-by', 'cyclic-express')
+    .set('x-powered-by', 'cyclic.sh')
     .send('Hello World!')
 })
 
 app.use('*', (req,res) => {
+  console.log('[hello-world] Star handler called')
   res
-    .set('x-powered-by', 'cyclic-express')
+    .set('x-powered-by', 'cyclic.sh')
     .json({
       msg: "Not strickly part of the hello world but you get the picture.",
       at: new Date().toISOString(),
