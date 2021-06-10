@@ -6,6 +6,7 @@ app.get('/', (req, res) => {
   res
     .set('x-powered-by', 'cyclic.sh')
     .send('Hello World!')
+    .end()
 })
 
 app.use('*', (req,res) => {
@@ -23,6 +24,7 @@ app.use('*', (req,res) => {
       headers: req.headers,
       cookies: req.cookies,
     })
+    .end()
 })
 
 module.exports.app = app
