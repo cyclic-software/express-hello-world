@@ -16,7 +16,7 @@ app.use('*', (req,res) => {
   console.log('[hello-world] Star handler called')
   let version = 'unknown'
   if (fs.existsSync(VERSION_FILENAME)) {
-    version = fs.readFileSync(VERSION_FILENAME).toString()
+    version = fs.readFileSync(VERSION_FILENAME).toString().substr(0,8)
   }
   res
     .set('x-powered-by', 'cyclic.sh')
