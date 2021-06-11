@@ -35,4 +35,4 @@ app.use('*', (req,res) => {
     .end()
 })
 
-module.exports.app = app
+module.exports = app
