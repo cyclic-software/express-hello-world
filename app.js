@@ -1,20 +1,28 @@
 const express = require('express')
 const app = express()
+const fs = require('fs')
+
+const VERSION_FILENAME='./.git/refs/heads/main'
 
 app.get('/', (req, res) => {
   console.log('[hello-world] root handler called')
   res
     .set('x-powered-by', 'cyclic.sh')
-    .send('Hello World!')
+    .send('<h1>Hello World!</h1>')
     .end()
 })
 
 app.use('*', (req,res) => {
   console.log('[hello-world] Star handler called')
+  let version = 'unknown'
+  if (fs.existsSync(VERSION_FILENAME)) {
+    version = fs.readFileSync(VERSION_FILENAME).toString()
+  }
   res
     .set('x-powered-by', 'cyclic.sh')
     .json({
       msg: "Not strickly part of the hello world but you get the picture.",
+      version,
       at: new Date().toISOString(),
       method: req.method,
       hostname: req.hostname,
