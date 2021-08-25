@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
   console.log('[hello-world] root handler called')
   res
     .set('x-powered-by', 'cyclic.sh')
-    .send('<h1>Hello World!</h1>')
+    .send('<h1>Hello Cyclic.sh!</h1>')
     .end()
 })
 
