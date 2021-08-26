@@ -1,21 +1,20 @@
-# Express Hello World
+# Cyclic Hello World
 
-Implements the Expressjs Hello World example to provide a faster start deploying onto the Cyclic platform
+This is a basic Expressjs app with static file hosting and 
 
 ## Installation
 
-- Fork this repo
+- Fork this repo (https://github.com/cyclic-software/express-hello-world)
 - Clone to your local
 - `npm install`
 
-## Running
+## Local
 
-- `npm start`
-- Browser: `http://localhost:3443/some/path?q=query+one&q=second+query&single=value`
-- Commandline: `curl -i -XGET "http://localhost:3443/cmd/line-curl"`
+- `npm run serve`
+- Browser: `http://localhost:3000/some/path?q=query+one&q=second+query&single=value`
+- Commandline: `curl -i -XGET "http://localhost:3000/cmd/line-curl"`
 
 ## Cyclic Runtime
 
-- The Cyclic runtime expects a file in the root of your project named `app.js`
-- The runtime will `const app = require('./app')`
-- The runtime expects the express app to be exported as: `module.exports = app`
+- The Cyclic runtime expects a file in the root of your project named `server.js`
+- The runtime will `node .` which runs your `server.js` by default.

@@ -1,11 +1,35 @@
 const express = require('express')
+const path = require("path");
 const app = express()
-const fs = require('fs')
 
-const VERSION_FILENAME='./.git/refs/heads/main'
+// /////////////////////////////////////////////////////////////////////////////
+// Logs all requests path and method
+app.use(function (req, res, next) {
+  console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
+  next();
+});
 
+// /////////////////////////////////////////////////////////////////////////////
+// This configures static hosting for files in /public that have the extensions
+// listed in the array.
+var options = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
+  index: ['index.html'],
+  maxAge: '1m',
+  redirect: false,
+  setHeaders: function (res, path, stat) {
+    res.set('x-timestamp', Date.now())
+  }
+}
+app.use(express.static('public', options))
+
+
+// /////////////////////////////////////////////////////////////////////////////
+// This handles GET requests to the root route '/'
 app.get('/', (req, res) => {
-  console.log('[hello-world] root handler called')
+  console.log('[express-hello-world] root handler called')
   res
     .set('x-powered-by', 'cyclic.sh')
     .send('<h1>Hello World!</h1>')
@@ -13,24 +37,19 @@ app.get('/', (req, res) => {
 })
 
 app.use('*', (req,res) => {
-  console.log('[hello-world] Star handler called')
-  let version = 'unknown'
-  if (fs.existsSync(VERSION_FILENAME)) {
-    version = fs.readFileSync(VERSION_FILENAME).toString().substr(0,8)
-  }
+  // console.log(`[express-hello-world] * handler ${req.method}:${req.path}`)
   res
     .set('x-powered-by', 'cyclic.sh')
     .json({
-      msg: "Not strickly part of the hello world but you get the picture.",
-      version,
       at: new Date().toISOString(),
       method: req.method,
       hostname: req.hostname,
       ip: req.ip,
-      path: req.params[0],
       query: req.query,
       headers: req.headers,
       cookies: req.cookies,
+      params: req.params,
+      env: process.env
     })
     .end()
 })
