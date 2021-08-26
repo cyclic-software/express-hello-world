@@ -1,36 +1,42 @@
 const express = require('express')
+const path = require("path");
 const app = express()
-const fs = require('fs')
 
-const VERSION_FILENAME='./.git/refs/heads/main'
+// #############################################################################
+// Logs all request paths and method
+app.use(function (req, res, next) {
+  res.res.set('x-timestamp', Date.now())
+  res.set('x-powered-by', 'cyclic.sh')
+  console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
+  next();
+});
 
-app.get('/', (req, res) => {
-  console.log('[hello-world] root handler called')
-  res
-    .set('x-powered-by', 'cyclic.sh')
-    .send('<h1>Hello World!</h1>')
-    .end()
-})
+// #############################################################################
+// This configures static hosting for files in /public that have the extensions
+// listed in the array.
+var options = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
+  index: ['index.html'],
+  maxAge: '1m',
+  redirect: false
+}
+app.use(express.static('public', options))
 
+// #############################################################################
+// Catch all handler for all other request.
 app.use('*', (req,res) => {
-  console.log('[hello-world] Star handler called')
-  let version = 'unknown'
-  if (fs.existsSync(VERSION_FILENAME)) {
-    version = fs.readFileSync(VERSION_FILENAME).toString().substr(0,8)
-  }
-  res
-    .set('x-powered-by', 'cyclic.sh')
-    .json({
-      msg: "Not strickly part of the hello world but you get the picture.",
-      version,
+  res.json({
       at: new Date().toISOString(),
       method: req.method,
       hostname: req.hostname,
       ip: req.ip,
-      path: req.params[0],
       query: req.query,
       headers: req.headers,
       cookies: req.cookies,
+      params: req.params,
+      env: process.env
     })
     .end()
 })
