@@ -2,14 +2,16 @@ const express = require('express')
 const path = require("path");
 const app = express()
 
-// /////////////////////////////////////////////////////////////////////////////
-// Logs all requests path and method
+// #############################################################################
+// Logs all request paths and method
 app.use(function (req, res, next) {
+  res.res.set('x-timestamp', Date.now())
+  res.set('x-powered-by', 'cyclic.sh')
   console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
   next();
 });
 
-// /////////////////////////////////////////////////////////////////////////////
+// #############################################################################
 // This configures static hosting for files in /public that have the extensions
 // listed in the array.
 var options = {
@@ -18,29 +20,14 @@ var options = {
   extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
   index: ['index.html'],
   maxAge: '1m',
-  redirect: false,
-  setHeaders: function (res, path, stat) {
-    res.set('x-timestamp', Date.now())
-  }
+  redirect: false
 }
 app.use(express.static('public', options))
 
-
-// /////////////////////////////////////////////////////////////////////////////
-// This handles GET requests to the root route '/'
-app.get('/', (req, res) => {
-  console.log('[express-hello-world] root handler called')
-  res
-    .set('x-powered-by', 'cyclic.sh')
-    .send('<h1>Hello World!</h1>')
-    .end()
-})
-
+// #############################################################################
+// Catch all handler for all other request.
 app.use('*', (req,res) => {
-  // console.log(`[express-hello-world] * handler ${req.method}:${req.path}`)
-  res
-    .set('x-powered-by', 'cyclic.sh')
-    .json({
+  res.json({
       at: new Date().toISOString(),
       method: req.method,
       hostname: req.hostname,

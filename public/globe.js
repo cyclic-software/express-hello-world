@@ -43,7 +43,7 @@
     land:     { fill:   '#32608f' },
     borders:  { stroke: '#cccccc' }
   }));
-  
+
   // This plugin takes lake data from the special
   // TopoJSON we're loading and draws them on the map.
   function lakes(options) {
@@ -87,154 +87,41 @@
   }));
   // Set up the globe's initial scale, offset, and rotation.
   globe.projection.scale(175).translate([175, 175]).rotate([0, -10, 0]);
- 
+
   let canvas = document.getElementById('rotatingGlobe');
   canvas.width = 350;
   canvas.height = 350;
   // Draw that globe!
   globe.draw(canvas);
 
-  // Every few hundred milliseconds, we'll draw another random ping.
-  let colors = ['white'];
-  //Ohio
-  setInterval(function() {
-    let lat = 40.32497;
-    let lng = -82.83653;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);
-  //Virginia
+  var locations = [
+    {"location": "Ohio", "lat": "40.32497", "lng": "-82.83653"},
+    {"location": "Virginia",   "lat": "34.41222", "lng": "-78.47445"},
+    {"location": "California", "lat": "36.48079", "lng": "-119.33910"},
+    {"location": "Oregon", "lat": "43.81512", "lng": "-120.78339"},
+    {"location": "Cape Town, South Africa", "lat": "-33.89178", "lng": "18.43676"},
+    {"location": "Hong Kong, China", "lat": "22.30548", "lng": "114.17572"},
+    {"location": "Mumbay, India", "lat": "19.07960", "lng": "72.87293"},
+    {"location": "Osaka, Japan", "lat": "37.70725", "lng": "135.49608"},
+    {"location": "Seoul, Korea", "lat": "37.55322", "lng": "126.99229"},
+    {"location": "Singapore", "lat": "1.35724", "lng": "103.86827"},
+    {"location": "Sydney", "lat": "-33.81413", "lng": "151.20285"},
+    {"location": "Canada", "lat": "60.55165", "lng": "-111.21677"},
+    {"location": "Frankfurt", "lat": "50.16668", "lng": "8.74766"},
+    {"location": "Ireland", "lat": "53.15114", "lng": "-8.25418"},
+    {"location": "London", "lat": "51.53359", "lng": "-0.02398"},
+    {"location": "Milan", "lat": "45.48840", "lng": "9.21345"},
+    {"location": "Paris", "lat": "48.85658", "lng": "2.35530"},
+    {"location": "Stockholm", "lat": "59.32891", "lng": "18.06768"},
+    {"location": "Bahrain", "lat": "35.20769", "lng": "72.54652"},
+    {"location": "Sao Paulo", "lat": "-23.46811", "lng": "-46.57775"
+    }
+  ]
+
+  locations.forEach(e => {
     setInterval(function() {
-    let lat = 34.41222;
-    let lng = -78.47445;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);
-    //California
-  setInterval(function() {
-    let lat = 36.48079;
-    let lng = -119.33910;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);
-  //Oregon
-  setInterval(function() {
-    let lat = 43.81512;
-    let lng = -120.78339;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);
-  //Cape Town, Sudafrica
-  setInterval(function() {
-    let lat = -33.89178;
-    let lng = 18.43676;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);  
-  //Hong Kong, China
-  setInterval(function() {
-    let lat = 22.30548;
-    let lng = 114.17572;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150); 
-  //Mumbay, India
-  setInterval(function() {
-    let lat = 19.07960;
-    let lng = 72.87293;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);
-  //Osaka, Japan
-  setInterval(function() {
-    let lat = 37.70725;
-    let lng = 135.49608;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);  
-  //Seoul, Corea
-  setInterval(function() {
-    let lat = 37.55322;
-    let lng = 126.99229;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);
-  //Singapore
-  setInterval(function() {
-    let lat = 1.35724;
-    let lng = 103.86827;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);    
-  //Sydney
-  setInterval(function() {
-    let lat = -33.81413;
-    let lng = 151.20285;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);
-  //Canada
-  setInterval(function() {
-    let lat = 60.55165;
-    let lng = -111.21677;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);
-  //Frankfurt
-  setInterval(function() {
-    let lat = 50.16668;
-    let lng = 8.74766;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);  
-  //Ireland
-  setInterval(function() {
-    let lat = 53.15114;
-    let lng = -8.25418;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);
-  //London
-  setInterval(function() {
-    let lat = 51.53359;
-    let lng = -0.02398;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150); 
-  //Milan
-  setInterval(function() {
-    let lat = 45.48840;
-    let lng = 9.21345;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150); 
-  //Paris
-  setInterval(function() {
-    let lat = 48.85658;
-    let lng = 2.35530;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150); 
-  //Stockholm
-  setInterval(function() {
-    let lat = 59.32891;
-    let lng = 18.06768;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150); 
-  //Bahrain
-  setInterval(function() {
-    let lat = 35.20769;
-    let lng = 72.54652;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);  
-  //Sao Paulo
-  setInterval(function() {
-    let lat = -23.46811;
-    let lng = -46.57775;
-    let color = colors;
-    globe.plugins.pings.add(lng, lat, { color: color, ttl: 2000, angle: Math.random() * 4 });
-  }, 150);    
-  
+      globe.plugins.pings.add(e.lng, e.lat, { color: ['white'], ttl: 2000, angle: Math.random() * 4 });
+    }, 150);
+  });
+
 })();
