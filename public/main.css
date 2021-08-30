@@ -19,8 +19,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 50px;
   animation:
-  animated-text 1.2s steps(17, end) 1s 1 normal both,
-  animated-cursor 600ms steps(17, end) 10;
+  animated-text 1.2s steps(17, end) 1s 1 normal both
 }
 
 /* text animation */
@@ -32,15 +31,7 @@ body {
     width: 100%;
   }
 }
-/* cursor animations */
-@keyframes animated-cursor {
-  from {
-    border-right-color: #3c3c3c;
-  }
-  to {
-    border-right-color: transparent;
-  }
-}
+
 #particles-js {
   height: 100vh;
 }
