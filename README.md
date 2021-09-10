@@ -1,20 +1,40 @@
-# Cyclic Hello World
+# Cyclic - Express Hello World
 
-This is a basic Expressjs app with static file hosting and 
+This is a basic starter Expressjs app with:
 
-## Installation
+- Static file hosting
+- Logging Middleware
+- Catch-all handler that echoes request info
 
-- Fork this repo (https://github.com/cyclic-software/express-hello-world)
+## Quick Start
+
+- Deploy this repo with Cyclic
+  - https://app.cyclic.sh/api/app/deploy/cyclic-software/express-hello-world
+
+## Local Quick Start
+
+If you want to setup your dev account and deploy with `git push`
+
+- Fork this repo (or deploy above)
 - Clone to your local
-- `npm install`
-
-## Local
-
-- `npm run serve`
-- Browser: `http://localhost:3000/some/path?q=query+one&q=second+query&single=value`
-- Commandline: `curl -i -XGET "http://localhost:3000/cmd/line-curl"`
+- Install dependencies `npm install`
+- Run locally `npm serve`
+- Make requests
+  - Browser: `http://localhost:3000/some/path?q=query+one&q=second+query&single=value`
+  - Command line: `curl -i -XGET "http://localhost:3000/cmd/line-curl"`
+- Deploy on Cyclic
+  - https://app.cyclic.sh/api/app/deploy/cyclic-software/express-hello-world
 
 ## Cyclic Runtime
 
-- The Cyclic runtime expects a file in the root of your project named `server.js`
-- The runtime will `node .` which runs your `server.js` by default.
+- Cyclic hosts your app on serverless infrastructure. That means there is no guarantee of memory or file system persistence between requests.
+- The runtime expects a nodejs entry point defined as:
+  - package.json "main" field defines the entry point file (if missing uses index.js)
+  - Entry point starts a server on `process.env.PORT`
+
+## Say Hi
+
+Ask a question or give us a shout out:
+
+- 💌 hello@cyclic.sh
+- 🐣 https://twitter.com/cyclicsoftware
