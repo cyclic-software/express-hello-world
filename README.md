@@ -7,7 +7,7 @@ This is a basic starter Expressjs app with:
 - Catch-all handler that echoes request info
 
 ## Quick Start
-asdfasfd
+
 - Deploy this repo with Cyclic
   - https://app.cyclic.sh/api/app/deploy/cyclic-software/express-hello-world
 
