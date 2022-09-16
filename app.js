@@ -1,43 +1,59 @@
-const express = require('express')
-const path = require("path");
-const app = express()
+const express = require('express');
+const multer = require('multer');
+const { join } = require('path');
+const cors = require('cors');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 
-// #############################################################################
-// Logs all request paths and method
-app.use(function (req, res, next) {
-  res.set('x-timestamp', Date.now())
-  res.set('x-powered-by', 'cyclic.sh')
-  console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
-  next();
+const globalErrorHandller = require('./controller/errorController');
+const AppError = require('./utils/AppError');
+const authRoute = require('./routes/auth');
+const userRoute = require('./routes/users');
+const postRoute = require('./routes/posts');
+const categoryRoute = require('./routes/categories');
+
+const app = express();
+
+app.set('view engine', 'pug');
+app.set('views', join(__dirname, 'views'));
+
+app.use(express.json());
+app.use(express.static(join(__dirname, 'public')));
+app.use(cors());
+
+//MIDDLEWARE
+app.use(morgan('dev'));
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'img');
+  },
+  filename: (req, file, cb) => {
+    cb(null, req.body.name);
+  },
 });
 
-// #############################################################################
-// This configures static hosting for files in /public that have the extensions
-// listed in the array.
-var options = {
-  dotfiles: 'ignore',
-  etag: false,
-  extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
-  index: ['index.html'],
-  maxAge: '1m',
-  redirect: false
-}
-app.use(express.static('public', options))
+// PARSER
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+app.use(cookieParser());
 
-// #############################################################################
-// Catch all handler for all other request.
-app.use('*', (req,res) => {
-  res.json({
-      at: new Date().toISOString(),
-      method: req.method,
-      hostname: req.hostname,
-      ip: req.ip,
-      query: req.query,
-      headers: req.headers,
-      cookies: req.cookies,
-      params: req.params
-    })
-    .end()
-})
+const upload = multer({ storage: storage });
+app.post('/api/upload', upload.single('file'), (req, res) => {
+  res.status(200).json('File has been uploaded');
+});
 
-module.exports = app
+app.get('/', (req, res, next) => {
+  res.sendFile(join(__dirname, 'build', 'index.html'));
+});
+app.use('/api/auth', authRoute);
+app.use('/api/users', userRoute);
+app.use('/api/posts', postRoute);
+app.use('/api/category', categoryRoute);
+
+app.use('*', (req, res, next) => {
+  res.render('error', { title: 404, message: 'Page Not Found!!' });
+});
+app.use(globalErrorHandller);
+
+module.exports = app;
