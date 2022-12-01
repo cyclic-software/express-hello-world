@@ -1,0 +1,214 @@
+.topContainer {
+  background-color: white;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .topLeft {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+
+    .pageTitle {
+      font-weight: 600;
+      font-size: 28px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .titleCounter {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      border-radius: 24px;
+      width: auto;
+      height: 35px;
+      background-color: #e6ecf0;
+      font-weight: 450;
+      font-size: 18px;
+      line-height: 24px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+
+  .topRight {
+    margin-right: 20px;
+
+    .createReportBtn {
+      width: 170px;
+      height: 40px;
+      border: none;
+      padding: 5px;
+      background-color: rgb(231, 235, 240);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgb(154, 150, 150);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .createReportBtnIcon {
+        margin-right: 5px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+hr {
+  margin: 0px 10px;
+  border: 0.5px solid lightgray;
+}
+
+.summaryCardContainer {
+  margin: 20px 20px;
+  background-color: white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border-radius: 6px;
+
+  .summaryItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+    .activeIcon {
+      font-size: 10px;
+      color: #0d7c2d;
+    }
+
+    .pausedIcon {
+      font-size: 10px;
+      color: #f0a203;
+    }
+
+    .consumedIcon {
+      font-size: 10px;
+      color: #cf1322;
+    }
+
+    .completedIcon {
+      font-size: 10px;
+      color: #2d3540;
+    }
+
+    .cancelledIcon {
+      font-size: 10px;
+      color: #adbbcc;
+    }
+
+    .expiredIcon {
+      font-size: 10px;
+      color: #69788c;
+    }
+
+    .plannedIcon {
+      font-size: 10px;
+      color: #0a5ecc;
+    }
+
+    .proposedIcon {
+      font-size: 10px;
+      color: #f0a203;
+    }
+
+    .rejectedIcon {
+      font-size: 10px;
+      color: #f0a203;
+    }
+
+    .draftIcon {
+      font-size: 10px;
+      color: #adbbcc;
+    }
+
+    .itemCount {
+      margin-left: 10px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .itemLabel {
+      margin-left: 5px;
+      font-size: 15px;
+      font-weight: 400 !important;
+      font-family: 'Roboto';
+    }
+  }
+}
+
+.campaignTableDeck {
+  margin: 20px 20px;
+  background-color: white;
+  border-radius: 6px;
+
+  .campaignDataTable {
+    max-height: calc(100vh - 250px);
+    padding: 0px !important;
+    border-radius: 6px;
+
+    .MuiPaper-root {
+      border-radius: 6px;
+
+      .dpLeft {
+        margin: 10px 10px 10px 10px;
+        border-radius: 10px;
+
+        .MuiInputBase-input {
+          height: 2px;
+          font-size: 13px;
+          font-family: 'Roboto';
+        }
+      }
+
+      .dpRight {
+        margin: 10px 10px 10px 0px;
+
+        .MuiInputBase-input {
+          height: 2px;
+          font-size: 13px;
+          font-family: 'Roboto';
+        }
+      }
+      .MuiBox-root {
+        margin: 0px;
+      }
+      .MuiTableCell-root {
+        padding: 5px;
+      }
+    }
+
+    .tHead {
+      font-family: 'Roboto' !important;
+      font-weight: 400;
+      font-size: 13px;
+      text-align: center;
+    }
+    .tHeadOrder {
+      font-family: 'Roboto' !important;
+      font-weight: 400;
+      font-size: 13px;
+    }
+  }
+}
+
+.spotsCell {
+  display: flex;
+  flex-direction: column;
+}
+
+.spotsCellInnerContainer {
+  // display: flex;
+  // flex-direction: row;
+}

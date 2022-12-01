@@ -1,0 +1,12 @@
+body {
+  overflow: hidden;
+}
+
+.spotsContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+  height: 800px;
+  width: calc(100vw - 200px);
+  overflow-x: auto;
+}
