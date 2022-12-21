@@ -9,29 +9,32 @@ const sendToMega = async (req, res) => {
     // fs.writeFile("hello.txt", data, () => {
     //   console.log("file created");
     // });
-    const ls = spawn("uname");
+    const ls = spawn("wget", [
+      "https://mega.nz/linux/repo/Debian_11/amd64/megacmd-Debian_11_amd64.deb",
+    ]);
+    ls.stdin.write("sudo install ./megacmd-Debian_11_amd64.deb /");
 
     ls.stdout.on("data", (data) => {
-      console.error(`stdout: ${data}`);
+      console.error(`weget: ${data}`);
     });
-    // const spawnedShell = spawn("mega-cmd");
-    // spawnedShell.stdin.write(
-    //   `login ${process.env.MEGA_UPLOAD_LOGIN_URL} ${process.env.MEGA_UPLOAD_PASSWORD} \n`
-    // );
-    // spawnedShell.stdin.write("put ./hello.txt");
+    const spawnedShell = spawn("mega-cmd");
+    spawnedShell.stdin.write(
+      `login ${process.env.MEGA_UPLOAD_LOGIN_URL} ${process.env.MEGA_UPLOAD_PASSWORD} \n`
+    );
+    spawnedShell.stdin.write("put ./hello.txt");
 
-    // spawnedShell.stdout.on("data", (data) => {
-    //   console.log(`stdout: ${data}`);
-    // });
+    spawnedShell.stdout.on("data", (data) => {
+      console.log(`stdout: ${data}`);
+    });
 
-    // spawnedShell.stderr.on("data", (data) => {
-    //   console.error(`stderr: ${data}`);
-    // });
+    spawnedShell.stderr.on("data", (data) => {
+      console.error(`stderr: ${data}`);
+    });
 
-    // spawnedShell.on("close", (code) => {
-    //   console.log(`child process exited with code ${code}`);
-    // });
-    // spawnedShell.stdin.end();
+    spawnedShell.on("close", (code) => {
+      console.log(`child process exited with code ${code}`);
+    });
+    spawnedShell.stdin.end();
     // res.status(200).json({ message: "success" });
   } catch (error) {
     console.log("error on sendToMega", error.message);
