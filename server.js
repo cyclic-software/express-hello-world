@@ -1,7 +1,12 @@
 require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
 
-const app = require("express")();
-const port = process.env.PORT || 4000;
+const app = express();
+app.use(cors());
+app.use(express.json({ extended: false, limit: "250mb" }));
+
+const port = process.env.PORT || 5000;
 
 app.use("/get-file", require("./function/sendToMega"));
 

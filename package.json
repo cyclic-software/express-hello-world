@@ -20,6 +20,7 @@
   "homepage": "https://github.com/cyclic-software/express-hello-world#readme",
   "dependencies": {
     "child_process": "^1.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "util": "^0.12.5"
