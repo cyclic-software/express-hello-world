@@ -5,11 +5,16 @@ const sendToMega = async (req, res) => {
   try {
     console.log("called");
     // const { data } = req.body;
-    const data = "dj";
-    fs.writeFile("hello.txt", data, () => {
-      console.log("file created");
+    // const data = "dj";
+    // fs.writeFile("hello.txt", data, () => {
+    //   console.log("file created");
+    // });
+    const ls = spawn("uname");
+
+    ls.stdout.on("data", (data) => {
+      console.error(`stdout: ${data}`);
     });
-    const spawnedShell = spawn("uname");
+    const spawnedShell = spawn("mega-cmd");
     spawnedShell.stdin.write(
       `login ${process.env.MEGA_UPLOAD_LOGIN_URL} ${process.env.MEGA_UPLOAD_PASSWORD} \n`
     );
