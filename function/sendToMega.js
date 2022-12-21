@@ -9,10 +9,6 @@ const sendToMega = async (req, res) => {
     fs.writeFile("hello.txt", data, () => {
       console.log("file created");
     });
-    const ls = spawn("lsb_release", ["-a"]);
-    ls.stdout.on("data", (data) => {
-      console.log(`stdout: ${data}`);
-    });
     const spawnedShell = spawn("mega-cmd");
     spawnedShell.stdin.write(
       `login ${process.env.MEGA_UPLOAD_LOGIN_URL} ${process.env.MEGA_UPLOAD_PASSWORD} \n`
