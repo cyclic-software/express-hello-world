@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/cyclic-software/express-hello-world#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "child_process": "^1.0.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.17.1",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
