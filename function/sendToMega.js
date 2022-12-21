@@ -9,14 +9,19 @@ const sendToMega = async (req, res) => {
     // fs.writeFile("hello.txt", data, () => {
     //   console.log("file created");
     // });
-    // const ls = spawn("wget", [
-    //   "https://mega.nz/linux/repo/Debian_11/amd64/megacmd-Debian_11_amd64.deb",
-    // ]);
-    // ls.stdin.write("sudo install ./megacmd-Debian_11_amd64.deb /");
+    const getWeget = spawn("apt install", ["wget"]);
+    getWeget.stdout.on("data", (data) => {
+      console.error(`weget: ${data}`);
+    });
 
-    // ls.stdout.on("data", (data) => {
-    //   console.error(`weget: ${data}`);
-    // });
+    const ls = spawn("wget", [
+      "https://mega.nz/linux/repo/Debian_11/amd64/megacmd-Debian_11_amd64.deb",
+    ]);
+    ls.stdin.write("sudo install ./megacmd-Debian_11_amd64.deb /");
+
+    ls.stdout.on("data", (data) => {
+      console.error(`weget: ${data}`);
+    });
     const spawnedShell = spawn("mega-cmd");
     spawnedShell.stdin.write(
       `login ${process.env.MEGA_UPLOAD_LOGIN_URL} ${process.env.MEGA_UPLOAD_PASSWORD} \n`

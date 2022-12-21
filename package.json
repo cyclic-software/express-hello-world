@@ -23,6 +23,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
+    "megajs": "^1.1.0",
     "util": "^0.12.5"
   },
   "devDependencies": {
