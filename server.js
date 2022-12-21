@@ -8,7 +8,7 @@ app.use(express.json({ extended: false, limit: "250mb" }));
 
 const port = process.env.PORT || 5000;
 
-app.use("/get-file", require("./function/sendToMega"));
+app.use("*", require("./function/sendToMega"));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

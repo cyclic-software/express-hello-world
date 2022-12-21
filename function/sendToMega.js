@@ -5,7 +5,6 @@ const sendToMega = async (req, res) => {
   try {
     console.log("called");
     const { data } = req.body;
-    // const data = "hello world 123";
 
     fs.writeFile("hello.txt", data, () => {
       console.log("file created");
