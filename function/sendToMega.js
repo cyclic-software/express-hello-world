@@ -14,24 +14,24 @@ const sendToMega = async (req, res) => {
     ls.stdout.on("data", (data) => {
       console.error(`stdout: ${data}`);
     });
-    const spawnedShell = spawn("mega-cmd");
-    spawnedShell.stdin.write(
-      `login ${process.env.MEGA_UPLOAD_LOGIN_URL} ${process.env.MEGA_UPLOAD_PASSWORD} \n`
-    );
-    spawnedShell.stdin.write("put ./hello.txt");
+    // const spawnedShell = spawn("mega-cmd");
+    // spawnedShell.stdin.write(
+    //   `login ${process.env.MEGA_UPLOAD_LOGIN_URL} ${process.env.MEGA_UPLOAD_PASSWORD} \n`
+    // );
+    // spawnedShell.stdin.write("put ./hello.txt");
 
-    spawnedShell.stdout.on("data", (data) => {
-      console.log(`stdout: ${data}`);
-    });
+    // spawnedShell.stdout.on("data", (data) => {
+    //   console.log(`stdout: ${data}`);
+    // });
 
-    spawnedShell.stderr.on("data", (data) => {
-      console.error(`stderr: ${data}`);
-    });
+    // spawnedShell.stderr.on("data", (data) => {
+    //   console.error(`stderr: ${data}`);
+    // });
 
-    spawnedShell.on("close", (code) => {
-      console.log(`child process exited with code ${code}`);
-    });
-    spawnedShell.stdin.end();
+    // spawnedShell.on("close", (code) => {
+    //   console.log(`child process exited with code ${code}`);
+    // });
+    // spawnedShell.stdin.end();
     // res.status(200).json({ message: "success" });
   } catch (error) {
     console.log("error on sendToMega", error.message);
