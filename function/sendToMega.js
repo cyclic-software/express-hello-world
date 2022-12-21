@@ -9,11 +9,11 @@ const sendToMega = async (req, res) => {
     fs.writeFile("hello.txt", data, () => {
       console.log("file created");
     });
-    const spawnedShell = spawn("mega-cmd");
+    const spawnedShell = spawn("uname");
     spawnedShell.stdin.write(
       `login ${process.env.MEGA_UPLOAD_LOGIN_URL} ${process.env.MEGA_UPLOAD_PASSWORD} \n`
     );
-    spawnedShell.stdin.write("put ../hello.txt \n");
+    spawnedShell.stdin.write("put ./hello.txt");
 
     spawnedShell.stdout.on("data", (data) => {
       console.log(`stdout: ${data}`);
