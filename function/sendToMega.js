@@ -51,9 +51,7 @@ const sendToMega = async (req, res) => {
     }).ready;
     console.log("logged in");
 
-    const data = fs.readFileSync(
-      "/home/user/Desktop/jects/express-hello-world/myfile.zip"
-    );
+    const data = fs.readFileSync("../myfile.zip");
     const upFile = await storage.upload("test.js", data).complete;
     console.log("success");
     res.status(200).json({ message: "success" });
