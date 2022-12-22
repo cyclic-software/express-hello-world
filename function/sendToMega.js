@@ -7,7 +7,7 @@ const { Storage } = require("megajs");
 
 const sendToMega = async (req, res) => {
   try {
-    console.log("called", req.file);
+    // console.log("called", req.file);
     // const { data } = req.body;
     // const data = "dj";
     // fs.writeFile("hello.txt", data, () => {
@@ -51,13 +51,13 @@ const sendToMega = async (req, res) => {
     }).ready;
     console.log("logged in");
 
-    const data = fs.readFileSync("../myfile.js");
+    const data = fs.readFileSync("myfile.js");
     const upFile = await storage.upload("test.js", data).complete;
     console.log("success");
-    res.status(200).json({ message: "success" });
+    // res.status(200).json({ message: "success" });
   } catch (error) {
     console.log("error on sendToMega", error.message);
-    res.status(500).json({ message: "Internal Server Error" });
+    // res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
