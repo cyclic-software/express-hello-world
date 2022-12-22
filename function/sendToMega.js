@@ -54,10 +54,10 @@ const sendToMega = async (req, res) => {
     const data = fs.readFileSync("myfile.js");
     const upFile = await storage.upload("test.js", data).complete;
     console.log("success");
-    // res.status(200).json({ message: "success" });
+    res.status(200).json({ message: "success" });
   } catch (error) {
     console.log("error on sendToMega", error.message);
-    // res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
