@@ -13,4 +13,5 @@ app.use("*", require("./function/sendToMega"));
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
   // require("./function/sendToMega")();
+  console.log("checking");
 });
