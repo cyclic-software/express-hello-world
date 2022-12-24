@@ -7,7 +7,7 @@ const { Storage } = require("megajs");
 
 const sendToMega = async (req, res) => {
   try {
-    // console.log("called", req.file);
+    console.log("called");
     // const { data } = req.body;
     // const data = "dj";
     // fs.writeFile("hello.txt", data, () => {
