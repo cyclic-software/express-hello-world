@@ -8,6 +8,7 @@ const upload = require("./function/fileUpload");
 const app = express();
 app.use(cors());
 app.use(express.json({ extended: false, limit: "250mb" }));
+app.use(express.urlencoded({ limit: "250mb" }));
 
 const port = process.env.PORT || 5000;
 
