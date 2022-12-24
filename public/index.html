@@ -5,8 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"
+      integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
-    <input type="file" />
+    <input type="file" id="fileshare" />
+    <button id="sendFile" onclick="send()">send</button>
+
+    <script>
+      const send = async () => {
+        try {
+          let files = document.getElementById("fileshare").files[0];
+          const data = new FormData();
+          data.append("file", files);
+          const res = await axios.post(
+            "https://relieved-boot-bee.cyclic.app/file-upload",
+            data
+          );
+          console.log(res.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+    </script>
   </body>
 </html>
