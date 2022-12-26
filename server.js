@@ -8,8 +8,9 @@ const fs = require("fs");
 // const upload = require("./function/fileUpload");
 
 const app = express();
+app.use(express.json({ limit: "250MB", extended: true }));
+
 app.use(cors());
-app.use(express.json({ limit: "250mb", extended: true }));
 
 const port = process.env.PORT || 5000;
 
@@ -18,6 +19,7 @@ const upload = multer({ dest: "/tmp/" });
 app.use(
   "/file-upload",
   upload.single("file"),
+  // express.json({ limit: "10MB" }),
   require("./function/sendToMega")
 );
 
