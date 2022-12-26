@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cyclic-software/express-hello-world#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "child_process": "^1.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
