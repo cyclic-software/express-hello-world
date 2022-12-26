@@ -1,15 +1,15 @@
-const multer = require("multer");
-const { Storage } = require("megajs");
+// const multer = require("multer");
+// const { Storage } = require("megajs");
 
-const storage = multer.diskStorage({
-  destination: "/tmp/",
-  filename: function (req, file, cb) {
-    console.log("called");
-    cb(null, file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: "/tmp/",
+//   filename: function (req, file, cb) {
+//     console.log("called1");
+//     cb(null, file.originalname);
+//   },
+// });
 
-module.exports = upload = multer({
-  storage: storage,
-  limits: { fileSize: 1024 * 1024 * 500 },
-});
+// module.exports = upload = multer({
+//   storage: storage,
+//   limits: { fileSize: "500mb" },
+// });

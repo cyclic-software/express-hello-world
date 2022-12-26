@@ -3,7 +3,7 @@ const { Storage } = require("megajs");
 
 const sendToMega = async (req, res) => {
   try {
-    console.log("called");
+    console.log("called send-to-mega");
     const file = req.file;
     console.log(file);
     const storage = await new Storage({
@@ -11,7 +11,7 @@ const sendToMega = async (req, res) => {
       password: process.env.MEGA_PASSWORD,
     }).ready;
     console.log("logged in");
-    const data = fs.readFileSync(`/tmp/${file.originalname}`);
+    const data = fs.readFileSync(`/tmp/${file.filename}`);
 
     const upFile = await storage.upload(file.originalname, data).complete;
     fs.unlinkSync(file.path);

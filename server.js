@@ -2,15 +2,16 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const multer = require("multer");
 const bodyParser = require("body-parser");
-const fileUpload = require("./function/fileUpload");
+const multer = require("multer");
+
+// const fileUpload = require("./function/fileUpload");
 
 const port = process.env.PORT || 5000;
 
 const app = express();
 app.use(cors());
-// app.use(express.json({ limit: "500mb" }));
+app.use(express.json({ limit: "500mb" }));
 app.use(bodyParser.json({ limit: "500mb" }));
 app.use(
   bodyParser.urlencoded({
@@ -19,11 +20,11 @@ app.use(
     parameterLimit: 100000000,
   })
 );
-// const upload = multer({ dest: "/tmp/", limits: "250mb" });
+const upload = multer({ dest: "/tmp/", limits: { fileSize: "500mb" } });
 
 app.use(
   "/file-upload",
-  fileUpload.single("file"),
+  upload.single("file"),
   require("./function/sendToMega")
 );
 
