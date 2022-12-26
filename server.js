@@ -8,7 +8,8 @@ const fs = require("fs");
 // const upload = require("./function/fileUpload");
 
 const app = express();
-app.use(express.json({ limit: "250MB", extended: true }));
+app.use(express.json({ limit: "250mb" }));
+app.use(express.bodyParser({ limit: "250mb" }));
 
 app.use(cors());
 
