@@ -9,7 +9,7 @@ const { Storage } = require("megajs");
 const app = express();
 
 // Set up Multer to handle file uploads
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ dest: "/tmp" });
 
 // Set up route to handle file uploads
 app.post("/upload", upload.single("file"), async (req, res) => {
