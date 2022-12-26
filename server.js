@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const bodyParser = require("body-parser");
 const multer = require("multer");
 
 // const fileUpload = require("./function/fileUpload");
@@ -12,14 +11,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "500mb" }));
-app.use(bodyParser.json({ limit: "500mb" }));
-app.use(
-  bodyParser.urlencoded({
-    limit: "500mb",
-    extended: true,
-    parameterLimit: 100000000,
-  })
-);
+
 const upload = multer({ dest: "/tmp/", limits: { fileSize: "500mb" } });
 
 app.use(
