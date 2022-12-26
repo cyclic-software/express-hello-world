@@ -6,7 +6,7 @@ const multer = require("multer");
 
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: "25mb", extended: true }));
+app.use(express.json({ limit: "250mb", extended: true }));
 app.use(
   express.urlencoded({
     limit: "250mb",
