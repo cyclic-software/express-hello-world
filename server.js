@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
+const bodyParser = require("body-parser");
 const fileUpload = require("./function/fileUpload");
 
 const port = process.env.PORT || 5000;
