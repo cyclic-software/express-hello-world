@@ -13,7 +13,7 @@ app.use(express.json({ extended: false, limit: "250mb" }));
 
 const port = process.env.PORT || 5000;
 
-const upload = multer({ dest: __dirname + "/uploads/" });
+const upload = multer({ dest: __dirname + "./uploads/" });
 
 app.post(
   "/file-upload",
