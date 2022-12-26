@@ -2,17 +2,20 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const multer = require("multer");
+const fs = require("fs");
 
-const upload = require("./function/fileUpload");
+// const upload = require("./function/fileUpload");
 
 const app = express();
 app.use(cors());
 app.use(express.json({ extended: false, limit: "250mb" }));
-app.use(express.urlencoded({ limit: "250mb" }));
 
 const port = process.env.PORT || 5000;
 
-app.use(
+const upload = multer({ dest: "uploads/" });
+
+app.post(
   "/file-upload",
   upload.single("file"),
   require("./function/sendToMega")

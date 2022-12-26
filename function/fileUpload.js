@@ -1,4 +1,5 @@
 const multer = require("multer");
+const { Storage } = require("megajs");
 
 const storage = multer.diskStorage({
   destination: "/",
