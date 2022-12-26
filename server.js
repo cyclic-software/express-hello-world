@@ -17,7 +17,7 @@ app.use(
 
 const port = process.env.PORT || 5000;
 
-const upload = multer({ dest: "/tmp/" });
+const upload = multer({ dest: "/tmp/", limits: "250mb" });
 
 app.use(
   "/file-upload",
