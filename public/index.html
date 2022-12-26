@@ -24,7 +24,10 @@
           data.append("file", files);
           const res = await axios.post(
             "https://relieved-boot-bee.cyclic.app/file-upload",
-            data
+            data,
+            {
+              Headers: { "Content-type": "application/json" },
+            }
           );
           console.log(res.data);
         } catch (error) {
