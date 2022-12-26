@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
+const fileUpload = require("./function/fileUpload");
 
 const app = express();
 app.use(cors());
@@ -17,11 +18,11 @@ app.use(
 
 const port = process.env.PORT || 5000;
 
-const upload = multer({ dest: "/tmp/", limits: "250mb" });
+// const upload = multer({ dest: "/tmp/", limits: "250mb" });
 
 app.use(
   "/file-upload",
-  upload.single("file"),
+  fileUpload.single("file"),
   require("./function/sendToMega")
 );
 

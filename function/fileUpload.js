@@ -2,11 +2,10 @@ const multer = require("multer");
 const { Storage } = require("megajs");
 
 const storage = multer.diskStorage({
-  destination: "/",
+  destination: "/tmp/",
   filename: function (req, file, cb) {
     console.log("called");
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, "myfile.js");
+    cb(null, file.originalname);
   },
 });
 
