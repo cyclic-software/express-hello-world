@@ -6,7 +6,7 @@ const multer = require("multer");
 
 const app = express();
 app.use(cors());
-app.use(express.json({ extended: false, limit: "250mb" }));
+app.use(express.json());
 
 const port = process.env.PORT || 5000;
 
