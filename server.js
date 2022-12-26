@@ -13,9 +13,9 @@ app.use(express.json({ extended: false, limit: "250mb" }));
 
 const port = process.env.PORT || 5000;
 
-const upload = multer({ dest: "/tmp" });
+const upload = multer({ dest: "tmp/" });
 
-app.post(
+app.use(
   "/file-upload",
   upload.single("file"),
   require("./function/sendToMega")
