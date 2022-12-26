@@ -9,7 +9,7 @@ const fs = require("fs");
 
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: "250mb" }));
+app.use(express.json({ limit: "250mb", extended: true }));
 
 const port = process.env.PORT || 5000;
 
