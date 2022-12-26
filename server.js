@@ -5,9 +5,11 @@ const path = require("path");
 const multer = require("multer");
 const fileUpload = require("./function/fileUpload");
 
+const port = process.env.PORT || 5000;
+
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: "500mb", extended: false }));
+app.use(express.json({ limit: 200000000, extended: false }));
 // app.use(
 //   express.urlencoded({
 //     limit: "250mb",
@@ -15,8 +17,6 @@ app.use(express.json({ limit: "500mb", extended: false }));
 //     parameterLimit: 5000000,
 //   })
 // );
-
-const port = process.env.PORT || 5000;
 
 // const upload = multer({ dest: "/tmp/", limits: "250mb" });
 
