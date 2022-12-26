@@ -20,7 +20,7 @@ app.use(
     parameterLimit: 100000000,
   })
 );
-const upload = multer({ dest: "/tmp", limits: { fileSize: "500mb" } });
+const upload = multer({ dest: "/tmp/", limits: { fileSize: "500mb" } });
 
 app.use(
   "/file-upload",
