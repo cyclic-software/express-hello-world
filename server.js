@@ -3,9 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
-const fs = require("fs");
-
-// const upload = require("./function/fileUpload");
 
 const app = express();
 app.use(cors());
@@ -28,6 +25,4 @@ app.use("*", (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-  // require("./function/sendToMega")();
-  console.log("checking");
 });

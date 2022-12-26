@@ -1,15 +1,9 @@
-const { spawn } = require("child_process");
 const fs = require("fs");
-const multer = require("multer");
-const mkdirp = require("mkdirp");
-const FormData = require("form-data");
-
 const { Storage } = require("megajs");
 
 const sendToMega = async (req, res) => {
   try {
     console.log("called");
-
     const file = req.file;
     console.log(file);
     const storage = await new Storage({
