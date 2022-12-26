@@ -11,7 +11,7 @@ const sendToMega = async (req, res) => {
       password: process.env.MEGA_PASSWORD,
     }).ready;
     console.log("logged in");
-    const data = fs.readFileSync(`/tmp/${file.filename}`);
+    const data = fs.readFileSync(`tmp/${file.filename}`);
 
     const upFile = await storage.upload(file.originalname, data).complete;
     fs.unlinkSync(file.path);
