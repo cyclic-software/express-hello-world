@@ -11,7 +11,6 @@ const clientId = process.env.CLIENT_ID;
 const db_url = process.env.DB_URL;
 
 
-
 // ################################ DateBase #######################################
 /* fetch_folder_DB
 	Fetches the folder DB and returns the rows
@@ -124,6 +123,9 @@ app.get('/folders', function (req, res) {
 	- Waits for data from db to be loaded in, then gets the image list from imgur
 */
 for (const folder of Object.keys(folder_data)) {
+	if (folder == 'dick-den-2d') {
+		continue;
+	}
 	const imgPath = '/' + folder;
 	getImageAlbum(folder_data[folder]['imgur_album_id'])
 		.then((image_list) => {
@@ -139,6 +141,15 @@ for (const folder of Object.keys(folder_data)) {
 			})
 		});
 }
+
+/* Image Page
+*/
+app.get('/image', function (req, res) {
+	res.render('pages/template_image.ejs', {
+		disp_link: req.query.img
+	});
+})
+
 
 // ################################# Export #################################
 module.exports = app

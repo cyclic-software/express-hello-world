@@ -13,18 +13,6 @@
     margin: 0.5%;
 }
 
-/* .header:hover {
-    border-image: linear-gradient(to bottom right,
-            #b827fc 0%,
-            #2c90fc 25%,
-            #b8fd33 50%,
-            #fec837 75%,
-            #fd1892 100%);
-    ;
-    color: transparent;
-    border-image-slice: 50;
-} */
-
 .header:hover {
     border: solid transparent;
     border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);

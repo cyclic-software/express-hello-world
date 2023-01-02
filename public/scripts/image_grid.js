@@ -18,7 +18,9 @@ function loadImages(image_links) {
         const a = document.createElement("a");
         const linkText = document.createTextNode('');
         a.appendChild(linkText);
-        a.href = link;
+        // a.href = link;
+        let split = link.toString().split("/")
+        a.href = "/images?link=" + split[splitURL.length - 1];
         a.target = "_self";
         let link_ext = getFileExt(link);
         const extensions = ['mp4'];
