@@ -29,7 +29,7 @@ app.get('/home', function (req, res) {
   res.render(__dirname + '/public/html/home.html')
 })
 
-app.get('/home', function (req, res) {
+app.get('/folders', function (req, res) {
   res.render(__dirname + '/public/html/folders.html')
 })
 
