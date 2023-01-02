@@ -26,11 +26,11 @@ app.use(express.static('public', options))
 
 // #############################################################################
 app.get('/home', function (req, res) {
-  res.render(__dirname + '/public/home.html')
+  res.render(__dirname + '/public/html/home.html')
 })
 
 app.get('/folders', function (req, res) {
-  res.render(__dirname + '/index.html', {
+  res.render(__dirname + '/public/html/index.html', {
     folderList: ['folder1', 'folder2', 'folder3']
   });
 })
