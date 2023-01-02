@@ -64,7 +64,7 @@ var options = {
 }
 app.use(express.static('public', options))
 
-This setup caches for the browser
+// This setup caches for the browser
 app.use((req, res, next) => { // Cache the responses
 	const cachedBody = cache.get(req.url);
 	if (cachedBody) {
