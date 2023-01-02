@@ -1,7 +1,11 @@
 const express = require('express')
 const path = require("path");
 const sqlite = require("better-sqlite3");
+const request = require('request');
+
+
 const app = express()
+const clientId = process.env.CLIENT_ID;
 
 
 // ################################ DateBase #######################################
@@ -38,18 +42,21 @@ function process_DB(rows) {
 	return data;
 }
 // ################################ App Setup #######################################
+
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
+// app.set('views', __dirname);
+app.set('view engine', 'ejs');
+
+
 // Logs all request paths and method
-app.use(function (req, res, next) {
-	res.set('x-timestamp', Date.now())
-	res.set('x-powered-by', 'cyclic.sh')
-	console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
-	next();
-});
+// app.use(function (req, res, next) {
+// 	res.set('x-timestamp', Date.now())
+// 	res.set('x-powered-by', 'cyclic.sh')
+// 	console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
+// 	next();
+// });
 
-
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.set('views', __dirname);
 
 // This configures static hosting for files in /public that have the extensions
 // listed in the array.
@@ -57,7 +64,7 @@ var options = {
 	dotfiles: 'ignore',
 	etag: false,
 	extensions: ['htm', 'html', 'css', 'js', 'ico', 'jpg', 'jpeg', 'png', 'svg'],
-	index: ['index.html'],
+	index: ['html/index.html'],
 	maxAge: '1m',
 	redirect: false,
 	folder: '/public'
@@ -102,32 +109,32 @@ function getImageAlbum(albumId) {
 	});
 }
 // ################################ Routing ########################################
-let folder_data = process_DB(fetch_folder_DB(__dirname + '/public/db.sqlite'));
+let folder_data = process_DB(fetch_folder_DB(__dirname + '/database/db.sqlite3'));
 
 app.get('/home', function (req, res) {
-	res.render(__dirname + '/public/home.html')
+	res.render(__dirname + '/public/html/home.html')
 })
 
 /* Index page
 	- Waits for data from db to be loaded in, then renders the index.html
 */
 app.get('/folders', function (req, res) {
-	res.render(__dirname + '/public/folders.html', {
+	res.render(__dirname + '/public/html/folders.ejs', {
 		folders: Object.keys(folder_data)
-	})
-})
+	});
+});
 
 /* Folder page
 	- Waits for data from db to be loaded in, then gets the image list from imgur
 */
-for (const folder of Object.keys(data)) {
+for (const folder of Object.keys(folder_data)) {
 	const imgPath = '/' + folder;
-	getImageAlbum(data[folder]['imgur_album_id'])
+	getImageAlbum(folder_data[folder]['imgur_album_id'])
 		.then((image_list) => {
 			app.get(imgPath, function (req, res) {
-				var title = data[folder]['display_name'];
-				var description = data[folder]['description'];
-				res.render(__dirname + '/public/html/template_grid.html', {
+				var title = folder_data[folder]['display_name'];
+				var description = folder_data[folder]['description'];
+				res.render(__dirname + '/public/html/template_grid.ejs', {
 					image_links: image_list,
 					title: title,
 					description: description
@@ -139,8 +146,8 @@ for (const folder of Object.keys(data)) {
 
 // ################################ Error Handling #################################
 // Catch all handler for all other request.
-app.use('*', (req, res) => {
-	res.status(404).send('<h1>404! Page not found</h1>');
-})
+// app.use('*', (req, res) => {
+// 	res.status(404).send('<h1>404! Page not found</h1>');
+// })
 
 module.exports = app
