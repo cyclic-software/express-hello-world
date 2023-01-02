@@ -20,7 +20,6 @@ const db_url = process.env.DB_URL;
 	- returns: rows from the DB
 */
 function get_csv_db(url) {
-	let ts = Date.now();
 	const metadata = sync_fetch(url).text()
 	const split_metadata = metadata.split('\n')
 
@@ -36,7 +35,6 @@ function get_csv_db(url) {
 			imgur_album_id: row[3]
 		};
 	}
-	console.log(`get_csv_db took ${Date.now() - ts} ms`);
 	return data;
 }
 
@@ -117,7 +115,6 @@ app.get('/folders', function (req, res) {
 /* Folder page
 	- Waits for data from db to be loaded in, then gets the image list from imgur
 */
-let ts = Date.now();
 for (const folder of Object.keys(folder_data)) {
 	const imgPath = '/' + folder;
 	let image_list = sync_get_images(folder_data[folder]['imgur_album_id'])
@@ -132,7 +129,6 @@ for (const folder of Object.keys(folder_data)) {
 		});
 	})
 }
-console.log(`Sync took ${Date.now() - ts} ms`);
 
 // ################################# Export #################################
 module.exports = app
