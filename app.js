@@ -32,17 +32,18 @@ app.get('/home', function (req, res) {
 // #############################################################################
 // Catch all handler for all other request.
 app.use('*', (req, res) => {
-  res.json({
-    at: new Date().toISOString(),
-    method: req.method,
-    hostname: req.hostname,
-    ip: req.ip,
-    query: req.query,
-    headers: req.headers,
-    cookies: req.cookies,
-    params: req.params
-  })
-    .end()
+  // res.json({
+  //   at: new Date().toISOString(),
+  //   method: req.method,
+  //   hostname: req.hostname,
+  //   ip: req.ip,
+  //   query: req.query,
+  //   headers: req.headers,
+  //   cookies: req.cookies,
+  //   params: req.params
+  // })
+  //   .end()
+  res.status(404).send('<h1>404! Page not found</h1>');
 })
 
 module.exports = app
