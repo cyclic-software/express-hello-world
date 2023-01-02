@@ -70,7 +70,7 @@ app.use((req, res, next) => { // Cache the responses
 	}
 });
 
-// ############################ Routing Helpers ####################################
+// ############################ Get Images ####################################
 /* getImageAlbum
 	- Gets all images in a imgur album by id
 
@@ -110,10 +110,6 @@ function getImageAlbum(albumId) {
 // let folder_data = process_DB(fetch_folder_DB(__dirname + '/database/db.sqlite3'));
 let folder_data = get_csv_db(db_url);
 
-app.get('/home', function (req, res) {
-	res.render(__dirname + 'pages/home.html')
-})
-
 /* Index page
 	- Waits for data from db to be loaded in, then renders the index.html
 */
@@ -127,7 +123,6 @@ app.get('/folders', function (req, res) {
 /* Folder page
 	- Waits for data from db to be loaded in, then gets the image list from imgur
 */
-let ts = Date.now();
 for (const folder of Object.keys(folder_data)) {
 	const imgPath = '/' + folder;
 	getImageAlbum(folder_data[folder]['imgur_album_id'])
@@ -144,6 +139,6 @@ for (const folder of Object.keys(folder_data)) {
 			})
 		});
 }
-console.log(`Old image load took ${Date.now() - ts} ms`);
+
 // ################################# Export #################################
 module.exports = app
