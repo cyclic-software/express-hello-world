@@ -26,11 +26,11 @@ app.use(express.static('public', options))
 
 // #############################################################################
 app.get('/home', function (req, res) {
-  res.render(__dirname + '/public/html/home.html')
+  res.render(__dirname + '/public/home.html')
 })
 
 app.get('/folders', function (req, res) {
-  res.render(__dirname + '/public/html/folders.html')
+  res.render(__dirname + '/public/folders.html')
 })
 
 // #############################################################################
