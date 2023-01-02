@@ -30,7 +30,9 @@ app.get('/home', function (req, res) {
 })
 
 app.get('/folders', function (req, res) {
-  res.render(__dirname + '/public/folders.html')
+  res.render(__dirname + '/public/folders.html', {
+    folders: ['folder1', 'folder2', 'folder3']
+  })
 })
 
 // #############################################################################
