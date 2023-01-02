@@ -29,12 +29,6 @@ app.get('/home', function (req, res) {
   res.render(__dirname + '/public/html/home.html')
 })
 
-app.get('/folders', function (req, res) {
-  res.render('index.html', {
-    folderList: ['folder1', 'folder2', 'folder3']
-  });
-})
-
 // #############################################################################
 // Catch all handler for all other request.
 app.use('*', (req, res) => {
