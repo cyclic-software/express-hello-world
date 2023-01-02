@@ -30,7 +30,7 @@ app.get('/home', function (req, res) {
 })
 
 app.get('/folders', function (req, res) {
-  res.render(__dirname + '/public/html/index.html', {
+  res.render('index.html', {
     folderList: ['folder1', 'folder2', 'folder3']
   });
 })
