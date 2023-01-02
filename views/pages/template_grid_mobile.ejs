@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/image_grid.css">
+    <link rel="stylesheet" href="css/image_grid_mobile.css">
     <script type="text/javascript" src="scripts/image_grid_mobile.js"></script>
 </head>
 
@@ -25,9 +25,6 @@
         <div class="column" id="0"></div>
         <div class="column" id="1"></div>
     </div>
-    <p>
-        <%= image_links %>
-    </p>
     <script type="text/javascript">
         window.onload = function () {
             loadImages("<%= image_links %>");

@@ -1,13 +1,16 @@
 function loadImages(image_links) {
     const imageContainer = document.getElementById("imgcontainer");
     let id = 0;
+
     image_links = image_links.split(',');
     for (const link of image_links) {
+
         imageContainer.appendChild(createTable(id, link));
         id++;
         if (id > 3) {
             id = 0;
         }
+
     }
 
     function createTable(id, link) {

@@ -7,7 +7,7 @@ const NodeCache = require('node-cache');
 
 
 const app = express()
-const cache = new NodeCache({ stdTTL: 120 });
+// const cache = new NodeCache({ stdTTL: 120 });
 const clientId = process.env.CLIENT_ID;
 
 
@@ -65,20 +65,20 @@ var options = {
 app.use(express.static('public', options))
 
 // This setup caches for the browser
-app.use((req, res, next) => { // Cache the responses
-	const cachedBody = cache.get(req.url);
-	if (cachedBody) {
-		res.send(cachedBody);
-		return;
-	} else {
-		res.sendResponse = res.send;
-		res.send = body => {
-			cache.set(req.url, body);
-			res.sendResponse(body);
-		}
-		next();
-	}
-});
+// app.use((req, res, next) => { // Cache the responses
+// 	const cachedBody = cache.get(req.url);
+// 	if (cachedBody) {
+// 		res.send(cachedBody);
+// 		return;
+// 	} else {
+// 		res.sendResponse = res.send;
+// 		res.send = body => {
+// 			cache.set(req.url, body);
+// 			res.sendResponse(body);
+// 		}
+// 		next();
+// 	}
+// });
 
 
 // ############################ Routing Helpers ####################################
