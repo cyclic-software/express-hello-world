@@ -134,7 +134,12 @@ for (const folder of Object.keys(folder_data)) {
 			app.get(imgPath, function (req, res) {
 				var title = folder_data[folder]['display_name'];
 				var description = folder_data[folder]['description'];
-				res.render(__dirname + '/public/html/template_grid.ejs', {
+				// res.render(__dirname + '/public/html/template_grid.ejs', {
+				// 	image_links: image_list,
+				// 	title: title,
+				// 	description: description
+				// });
+				res.render(isMobile ? "pages/mobile" : "public/html/template_grid.ejs", {
 					image_links: image_list,
 					title: title,
 					description: description
