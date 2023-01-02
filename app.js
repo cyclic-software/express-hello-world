@@ -25,7 +25,7 @@ var options = {
 app.use(express.static('public', options))
 
 // #############################################################################
-app.get('/', function (req, res) {
+app.get('/home', function (req, res) {
   res.render(__dirname + '/public/home.html')
 })
 
