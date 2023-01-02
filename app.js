@@ -1,8 +1,5 @@
 const express = require('express')
-const path = require("path");
 const sync_fetch = require('sync-fetch')
-const sqlite = require("better-sqlite3");
-const request = require('request');
 const browser = require('browser-detect');
 const NodeCache = require('node-cache');
 const fetch = require('sync-fetch')
@@ -88,7 +85,7 @@ function sync_get_images(albumId) {
 	let image_list = [];
 	const metadata = fetch(`https://api.imgur.com/3/album/${albumId}`, {
 		headers: {
-			'Authorization': `Client-ID dae5026e52c8ce4`
+			'Authorization': `Client-ID ${clientId}`
 		}
 	}).text();
 
