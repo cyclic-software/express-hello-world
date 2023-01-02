@@ -115,20 +115,20 @@ app.get('/folders', function (req, res) {
 /* Folder page
 	- Waits for data from db to be loaded in, then gets the image list from imgur
 */
-for (const folder of Object.keys(folder_data)) {
-	const imgPath = '/' + folder;
-	let image_list = sync_get_images(folder_data[folder]['imgur_album_id'])
-	app.get(imgPath, function (req, res) {
-		var title = folder_data[folder]['display_name'];
-		var description = folder_data[folder]['description'];
-		const isMobile = browser(req.headers['user-agent']).mobile;
-		res.render(isMobile ? "pages/template_grid_mobile.ejs" : "pages/template_grid.ejs", {
-			image_links: image_list,
-			title: title,
-			description: description
-		});
-	})
-}
+// for (const folder of Object.keys(folder_data)) {
+// 	const imgPath = '/' + folder;
+// 	let image_list = sync_get_images(folder_data[folder]['imgur_album_id'])
+// 	app.get(imgPath, function (req, res) {
+// 		var title = folder_data[folder]['display_name'];
+// 		var description = folder_data[folder]['description'];
+// 		const isMobile = browser(req.headers['user-agent']).mobile;
+// 		res.render(isMobile ? "pages/template_grid_mobile.ejs" : "pages/template_grid.ejs", {
+// 			image_links: image_list,
+// 			title: title,
+// 			description: description
+// 		});
+// 	})
+// }
 
 // ################################# Export #################################
 module.exports = app
