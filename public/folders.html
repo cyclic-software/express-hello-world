@@ -9,12 +9,12 @@
 <body>
     <div class="header">
         <h1>This will be nicer and dynamic later</h1>
-        <h2>Click to navigate</h2>
+        <h2>Click to navigate/ <%= folderList %>
+        </h2>
     </div>
     <div class="simple">
         <h3 id="folderNavi">
         </h3>
-        <p>Testing</p>
         <script>
             window.onload = function () {
                 loadFolders("<%= folderList %>")
