@@ -2,9 +2,12 @@ const express = require('express')
 const path = require("path");
 const sqlite = require("better-sqlite3");
 const request = require('request');
+const browser = require('browser-detect');
+const NodeCache = require('node-cache');
 
 
 const app = express()
+const cache = new NodeCache({ stdTTL: 120 });
 const clientId = process.env.CLIENT_ID;
 
 
@@ -48,29 +51,34 @@ function process_DB(rows) {
 // app.set('views', __dirname);
 app.set('view engine', 'ejs');
 
-
-// Logs all request paths and method
-// app.use(function (req, res, next) {
-// 	res.set('x-timestamp', Date.now())
-// 	res.set('x-powered-by', 'cyclic.sh')
-// 	console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
-// 	next();
-// });
-
-
 // This configures static hosting for files in /public that have the extensions
 // listed in the array.
 var options = {
 	dotfiles: 'ignore',
 	etag: false,
 	extensions: ['htm', 'html', 'css', 'js', 'ico', 'jpg', 'jpeg', 'png', 'svg'],
-	index: ['html/index.html'],
+	index: ['index.html'],
 	maxAge: '1m',
 	redirect: false,
 	folder: '/public'
 }
 app.use(express.static('public', options))
-// app.use(express.static('public'));
+
+// This setup caches for the browser
+app.use((req, res, next) => { // Cache the responses
+	const cachedBody = cache.get(req.url);
+	if (cachedBody) {
+		res.send(cachedBody);
+		return;
+	} else {
+		res.sendResponse = res.send;
+		res.send = body => {
+			cache.set(req.url, body);
+			res.sendResponse(body);
+		}
+		next();
+	}
+});
 
 
 // ############################ Routing Helpers ####################################
@@ -112,14 +120,14 @@ function getImageAlbum(albumId) {
 let folder_data = process_DB(fetch_folder_DB(__dirname + '/database/db.sqlite3'));
 
 app.get('/home', function (req, res) {
-	res.render(__dirname + '/public/html/home.html')
+	res.render(__dirname + 'pages/home.html')
 })
 
 /* Index page
 	- Waits for data from db to be loaded in, then renders the index.html
 */
 app.get('/folders', function (req, res) {
-	res.render(__dirname + '/public/html/folders.ejs', {
+	res.render('pages/folders.ejs', {
 		folders: Object.keys(folder_data)
 	});
 });
@@ -139,7 +147,8 @@ for (const folder of Object.keys(folder_data)) {
 				// 	title: title,
 				// 	description: description
 				// });
-				res.render(isMobile ? "pages/mobile" : "public/html/template_grid.ejs", {
+				const isMobile = browser(req.headers['user-agent']).mobile;
+				res.render(isMobile ? "pages/template_grid_mobile.ejs" : "pages/template_grid.ejs", {
 					image_links: image_list,
 					title: title,
 					description: description
@@ -149,10 +158,5 @@ for (const folder of Object.keys(folder_data)) {
 		});
 }
 
-// ################################ Error Handling #################################
-// Catch all handler for all other request.
-// app.use('*', (req, res) => {
-// 	res.status(404).send('<h1>404! Page not found</h1>');
-// })
-
+// ################################# Export #################################
 module.exports = app
