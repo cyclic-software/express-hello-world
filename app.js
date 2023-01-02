@@ -11,6 +11,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('views', __dirname);
+
 // #############################################################################
 // This configures static hosting for files in /public that have the extensions
 // listed in the array.
@@ -23,8 +28,8 @@ var options = {
   redirect: false,
   folder: '/public'
 }
-app.use(express.static('public', options))
-// app.use(express.static('/public'));
+// app.use(express.static('public', options))
+app.use(express.static('/public'));
 
 // #############################################################################
 app.get('/home', function (req, res) {
