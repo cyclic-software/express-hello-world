@@ -28,8 +28,8 @@ var options = {
   redirect: false,
   folder: '/public'
 }
-// app.use(express.static('public', options))
-app.use(express.static('/public'));
+app.use(express.static('public', options))
+// app.use(express.static('/public'));
 
 // #############################################################################
 app.get('/home', function (req, res) {
