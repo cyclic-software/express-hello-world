@@ -1,14 +1,18 @@
 const express = require('express')
 const path = require("path");
+const sync_fetch = require('sync-fetch')
 const sqlite = require("better-sqlite3");
 const request = require('request');
 const browser = require('browser-detect');
 const NodeCache = require('node-cache');
+const fetch = require('sync-fetch')
 
 
 const app = express()
 const cache = new NodeCache({ stdTTL: 120 });
 const clientId = process.env.CLIENT_ID;
+const db_url = process.env.DB_URL;
+
 
 
 // ################################ DateBase #######################################
@@ -18,37 +22,29 @@ const clientId = process.env.CLIENT_ID;
 	- path: path to the DB
 	- returns: rows from the DB
 */
-function fetch_folder_DB(path) {
-	var db = new sqlite(path);
-	var rows = db.prepare('SELECT * FROM folders').all();
-	// console.log(rows[0]);
-	db.close();
-	return rows;
+function get_csv_db(url) {
+	let ts = Date.now();
+	const metadata = sync_fetch(url).text()
+	const split_metadata = metadata.split('\n')
 
-}
-
-/* process_DB
-	Processes the rows from the DB and returns a JSON object
-
-	- rows: rows from the DB
-	- returns: JSON object
-*/
-function process_DB(rows) {
 	let data = {};
-	rows.forEach((row) => {
-		data[row.folder_name] = {
-			display_name: row.display_name,
-			description: row.description,
-			imgur_album_id: row.imgur_album_id
+	for (let i in split_metadata) {
+		row = split_metadata[i].replace(/['"]+/g, '').split(',')
+		if (row[0] == 'folder_name') {
+			continue;
+		}
+		data[row[0]] = {
+			display_name: row[1],
+			description: row[2],
+			imgur_album_id: row[3]
 		};
-	});
+	}
+	console.log(`get_csv_db took ${Date.now() - ts} ms`);
 	return data;
 }
+
 // ################################ App Setup #######################################
 
-// app.engine('html', require('ejs').renderFile);
-// app.set('view engine', 'html');
-// app.set('views', __dirname);
 app.set('view engine', 'ejs');
 
 // This configures static hosting for files in /public that have the extensions
@@ -88,36 +84,24 @@ app.use((req, res, next) => { // Cache the responses
 	- param: albumId - the id of the album
 	- return: image_list - the list of images in the album
 */
-function getImageAlbum(albumId) {
-	const options = {
-		url: `https://api.imgur.com/3/album/${albumId}`,
-		headers: {
-			'Authorization': `Client-ID ${clientId}`
-		}
-	};
+function sync_get_images(albumId) {
 	let image_list = [];
-	return new Promise((resolve, reject) => {
-		request(options, (error, response, body) => {
-			if (error) {
-				console.error(error);
-			} else {
-				try {
-					const data = JSON.parse(body);
-					for (const image of data.data.images) {
-						image_list.push(image.link);
-					}
-					resolve(image_list);
-				} catch (e) {
-					// console.error(e);
-					console.error("Data: " + body);
-				}
-			}
-		});
+	const metadata = fetch(`https://api.imgur.com/3/album/${albumId}`, {
+		headers: {
+			'Authorization': `Client-ID dae5026e52c8ce4`
+		}
+	}).text();
 
-	});
+	const data = JSON.parse(metadata);
+	for (const image of data.data.images) {
+		image_list.push(image.link);
+	};
+	return image_list;
 }
+
 // ################################ Routing ########################################
-let folder_data = process_DB(fetch_folder_DB(__dirname + '/database/db.sqlite3'));
+// let folder_data = process_DB(fetch_folder_DB(__dirname + '/database/db.sqlite3'));
+let folder_data = get_csv_db(db_url);
 
 app.get('/home', function (req, res) {
 	res.render(__dirname + 'pages/home.html')
@@ -127,6 +111,7 @@ app.get('/home', function (req, res) {
 	- Waits for data from db to be loaded in, then renders the index.html
 */
 app.get('/folders', function (req, res) {
+	folder_data = get_csv_db(db_url);
 	res.render('pages/folders.ejs', {
 		folders: Object.keys(folder_data)
 	});
@@ -135,28 +120,22 @@ app.get('/folders', function (req, res) {
 /* Folder page
 	- Waits for data from db to be loaded in, then gets the image list from imgur
 */
+let ts = Date.now();
 for (const folder of Object.keys(folder_data)) {
 	const imgPath = '/' + folder;
-	getImageAlbum(folder_data[folder]['imgur_album_id'])
-		.then((image_list) => {
-			app.get(imgPath, function (req, res) {
-				var title = folder_data[folder]['display_name'];
-				var description = folder_data[folder]['description'];
-				// res.render(__dirname + '/public/html/template_grid.ejs', {
-				// 	image_links: image_list,
-				// 	title: title,
-				// 	description: description
-				// });
-				const isMobile = browser(req.headers['user-agent']).mobile;
-				res.render(isMobile ? "pages/template_grid_mobile.ejs" : "pages/template_grid.ejs", {
-					image_links: image_list,
-					title: title,
-					description: description
-				});
-			})
-
+	let image_list = sync_get_images(folder_data[folder]['imgur_album_id'])
+	app.get(imgPath, function (req, res) {
+		var title = folder_data[folder]['display_name'];
+		var description = folder_data[folder]['description'];
+		const isMobile = browser(req.headers['user-agent']).mobile;
+		res.render(isMobile ? "pages/template_grid_mobile.ejs" : "pages/template_grid.ejs", {
+			image_links: image_list,
+			title: title,
+			description: description
 		});
+	})
 }
+console.log(`Sync took ${Date.now() - ts} ms`);
 
 // ################################# Export #################################
 module.exports = app
