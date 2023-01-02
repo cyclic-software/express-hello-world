@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 var options = {
   dotfiles: 'ignore',
   etag: false,
-  extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
+  extensions: ['htm', 'html', 'css', 'js', 'ico', 'jpg', 'jpeg', 'png', 'svg'],
   index: ['index.html'],
   maxAge: '1m',
   redirect: false
@@ -25,18 +25,23 @@ var options = {
 app.use(express.static('public', options))
 
 // #############################################################################
+app.get('/', function (req, res) {
+  res.render(__dirname + '/public/home.html')
+})
+
+// #############################################################################
 // Catch all handler for all other request.
-app.use('*', (req,res) => {
+app.use('*', (req, res) => {
   res.json({
-      at: new Date().toISOString(),
-      method: req.method,
-      hostname: req.hostname,
-      ip: req.ip,
-      query: req.query,
-      headers: req.headers,
-      cookies: req.cookies,
-      params: req.params
-    })
+    at: new Date().toISOString(),
+    method: req.method,
+    hostname: req.hostname,
+    ip: req.ip,
+    query: req.query,
+    headers: req.headers,
+    cookies: req.cookies,
+    params: req.params
+  })
     .end()
 })
 
