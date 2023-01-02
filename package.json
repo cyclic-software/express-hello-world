@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cyclic-software/express-hello-world#readme",
   "dependencies": {
+    "better-sqlite3": "^8.0.1",
     "ejs": "^3.1.8",
     "express": "^4.17.1"
   },
