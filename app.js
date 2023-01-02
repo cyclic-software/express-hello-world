@@ -2,7 +2,7 @@ const express = require('express')
 const sync_fetch = require('sync-fetch')
 const browser = require('browser-detect');
 const NodeCache = require('node-cache');
-const fetch = require('sync-fetch')
+const request = require('request');
 
 
 const app = express()
@@ -39,7 +39,6 @@ function get_csv_db(url) {
 }
 
 // ################################ App Setup #######################################
-
 app.set('view engine', 'ejs');
 
 // This configures static hosting for files in /public that have the extensions
@@ -71,7 +70,6 @@ app.use((req, res, next) => { // Cache the responses
 	}
 });
 
-
 // ############################ Routing Helpers ####################################
 /* getImageAlbum
 	- Gets all images in a imgur album by id
@@ -79,19 +77,33 @@ app.use((req, res, next) => { // Cache the responses
 	- param: albumId - the id of the album
 	- return: image_list - the list of images in the album
 */
-function sync_get_images(albumId) {
-	let image_list = [];
-	const metadata = fetch(`https://api.imgur.com/3/album/${albumId}`, {
+function getImageAlbum(albumId) {
+	const options = {
+		url: `https://api.imgur.com/3/album/${albumId}`,
 		headers: {
 			'Authorization': `Client-ID ${clientId}`
 		}
-	}).text();
-
-	const data = JSON.parse(metadata);
-	for (const image of data.data.images) {
-		image_list.push(image.link);
 	};
-	return image_list;
+	let image_list = [];
+	return new Promise((resolve, reject) => {
+		request(options, (error, response, body) => {
+			if (error) {
+				console.error(error);
+			} else {
+				try {
+					const data = JSON.parse(body);
+					for (const image of data.data.images) {
+						image_list.push(image.link);
+					}
+					resolve(image_list);
+				} catch (e) {
+					// console.error(e);
+					console.error("Data: " + body);
+				}
+			}
+		});
+
+	});
 }
 
 // ################################ Routing ########################################
@@ -115,20 +127,23 @@ app.get('/folders', function (req, res) {
 /* Folder page
 	- Waits for data from db to be loaded in, then gets the image list from imgur
 */
-// for (const folder of Object.keys(folder_data)) {
-// 	const imgPath = '/' + folder;
-// 	let image_list = sync_get_images(folder_data[folder]['imgur_album_id'])
-// 	app.get(imgPath, function (req, res) {
-// 		var title = folder_data[folder]['display_name'];
-// 		var description = folder_data[folder]['description'];
-// 		const isMobile = browser(req.headers['user-agent']).mobile;
-// 		res.render(isMobile ? "pages/template_grid_mobile.ejs" : "pages/template_grid.ejs", {
-// 			image_links: image_list,
-// 			title: title,
-// 			description: description
-// 		});
-// 	})
-// }
-
+let ts = Date.now();
+for (const folder of Object.keys(folder_data)) {
+	const imgPath = '/' + folder;
+	getImageAlbum(folder_data[folder]['imgur_album_id'])
+		.then((image_list) => {
+			app.get(imgPath, function (req, res) {
+				var title = folder_data[folder]['display_name'];
+				var description = folder_data[folder]['description'];
+				const isMobile = browser(req.headers['user-agent']).mobile;
+				res.render(isMobile ? "pages/template_grid_mobile.ejs" : "pages/template_grid.ejs", {
+					image_links: image_list,
+					title: title,
+					description: description
+				});
+			})
+		});
+}
+console.log(`Old image load took ${Date.now() - ts} ms`);
 // ################################# Export #################################
 module.exports = app
