@@ -1,12 +1,12 @@
-const express = require('express')
-const sync_fetch = require('sync-fetch')
+const express = require('express');
+const sync_fetch = require('sync-fetch');
 const browser = require('browser-detect');
 const NodeCache = require('node-cache');
 const request = require('request');
 
 
 const app = express()
-const cache = new NodeCache({ stdTTL: 120 });
+// const cache = new NodeCache({ stdTTL: 120 });
 const clientId = process.env.CLIENT_ID;
 const db_url = process.env.DB_URL;
 
@@ -54,20 +54,20 @@ var options = {
 app.use(express.static('public', options))
 
 // This setup caches for the browser
-app.use((req, res, next) => { // Cache the responses
-	const cachedBody = cache.get(req.url);
-	if (cachedBody) {
-		res.send(cachedBody);
-		return;
-	} else {
-		res.sendResponse = res.send;
-		res.send = body => {
-			cache.set(req.url, body);
-			res.sendResponse(body);
-		}
-		next();
-	}
-});
+// app.use((req, res, next) => { // Cache the responses
+// 	const cachedBody = cache.get(req.url);
+// 	if (cachedBody) {
+// 		res.send(cachedBody);
+// 		return;
+// 	} else {
+// 		res.sendResponse = res.send;
+// 		res.send = body => {
+// 			cache.set(req.url, body);
+// 			res.sendResponse(body);
+// 		}
+// 		next();
+// 	}
+// });
 
 // ############################ Get Images ####################################
 /* getImageAlbum
@@ -77,6 +77,7 @@ app.use((req, res, next) => { // Cache the responses
 	- return: image_list - the list of images in the album
 */
 function getImageAlbum(albumId) {
+	// console.log("Getting album: " + albumId);
 	const options = {
 		url: `https://api.imgur.com/3/album/${albumId}`,
 		headers: {
@@ -94,10 +95,12 @@ function getImageAlbum(albumId) {
 					for (const image of data.data.images) {
 						image_list.push(image.link);
 					}
+					// image_list = image_list.split(',');
 					resolve(image_list);
 				} catch (e) {
 					// console.error(e);
-					console.error("Data: " + body);
+					console.error("ERROR ALBUM: " + e);
+					throw new Error('Throw makes it go boom!')
 				}
 			}
 		});

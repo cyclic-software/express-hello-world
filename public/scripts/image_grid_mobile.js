@@ -4,7 +4,6 @@ function loadImages(image_links) {
     image_links = image_links.split(',');
     for (const link of image_links) {
         imageContainer.appendChild(createTable(id, link));
-        console.log("Linking: " + link + "/" + id);
         id++;
         if (id > 1) {
             id = 0;
@@ -16,7 +15,8 @@ function loadImages(image_links) {
         const a = document.createElement("a");
         const linkText = document.createTextNode('');
         a.appendChild(linkText);
-        a.href = link;
+        let split = link.toString().split("/")
+        a.href = "/image?img=" + split[split.length - 1];
         a.target = "_self";
         let link_ext = getFileExt(link);
         const extensions = ['mp4'];

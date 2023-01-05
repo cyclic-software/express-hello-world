@@ -1,16 +1,13 @@
 function loadImages(image_links) {
     const imageContainer = document.getElementById("imgcontainer");
     let id = 0;
-
     image_links = image_links.split(',');
     for (const link of image_links) {
-
         imageContainer.appendChild(createTable(id, link));
         id++;
         if (id > 3) {
             id = 0;
         }
-
     }
 
     function createTable(id, link) {
@@ -18,9 +15,8 @@ function loadImages(image_links) {
         const a = document.createElement("a");
         const linkText = document.createTextNode('');
         a.appendChild(linkText);
-        // a.href = link;
         let split = link.toString().split("/")
-        a.href = "/images?link=" + split[splitURL.length - 1];
+        a.href = "/image?img=" + split[split.length - 1];
         a.target = "_self";
         let link_ext = getFileExt(link);
         const extensions = ['mp4'];

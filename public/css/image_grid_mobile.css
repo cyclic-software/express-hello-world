@@ -5,12 +5,19 @@
 
 .header {
     text-align: center;
-    padding: 35px;
     color: white;
     border-radius: 10px;
     border-color: white;
     border-style: solid;
     margin: 0.5%;
+}
+
+h1.headertext {
+    font-size: 3em;
+}
+
+p.headertext {
+    font-size: 2em;
 }
 
 /* .header:hover {
