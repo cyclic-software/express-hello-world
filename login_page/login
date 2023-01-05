@@ -1,1 +1,0 @@
-USER='login_acc_2' DB='williamsnash/user_accounts' PASSWD='v2_3xfZX_rjP6JpSX86UhHf58natfQfD' node login.js
