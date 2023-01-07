@@ -1,33 +1,275 @@
-<!doctype html>
-<html lang=en>
-  <head>
-    <meta charset=utf-8>
-    <title>Cyclic: Hello World</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/main.css">
-    <link rel="icon" href="/favicon.ico" />
-  </head>
-  <body>
-    <div id="hello-wrapper">
-      <div id="particles-js"></div>
-      <div class="content position-absolute w-100 top-0 pt-5">
-        <div class="cta">
-          <div id="hello" class="typewriter pb-3">
-            Hello World!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcreater</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="./pictures/logo web creator new.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body id="body">
+    <nav class="navbar navbar-expand-lg bg-myme">
+        <div class="container-fluid" >
+          <a class="navbar-brand" href="/"><img src="./pictures/logo web creator new.svg" alt="logo" class="iconimg "></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-dark" aria-current="page" href="/">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="components/sorrypage.html">About</a>
+              </li>
+            </ul>
+              <a class="btn btn-outline-success" href="components/signin.html">Sign In</a>
           </div>
-          <a class="btn btn-primary mb-5" href="//app.cyclic.sh/api/login">Sign in to Cyclic</a>
         </div>
-        <div id="world">
-          <canvas id='rotatingGlobe' style='cursor: move;'></canvas>
-        </div>
+      </nav>
+      <div class="container-fluid ">
+        <div class="container-fluid" style="background-color: #f7ddc5;">
+          <div class="row mt-2">
+            <div class="col-lg-7 col-sm-12">
+              <img src="pictures/andy-holmes-webyw4NsFPg-unsplash.jpg" alt="..." class="imgwidth rounded">
+            </div>
+            <div class="col-lg-5 col-sm-12">
+              <span class="textCenter">
+                <h2>
+                  Welcome to Webcreater
+                </h2>
+                <h4 class="mt-5">
+                  Discover all new technologies of web-development form simple Static websites of html/css to complete full-stack website with most cost efficient server of Linode and database of Mongodb.
+                </h4>
+                <div class="align-self-end mt-5">
+                  <a href="/on_signin_pages/storiesPage/user_typed_data">
+                <button class=" rounded-circle " style="background-color:#199a74 ; border: none; width: 3rem; height: 3rem;">
+                  <i class="fas fa-plus" style="color:rgb(255, 255, 255);"></i>
+                  </button></a>
+                </div>
+              </span>
+            </div>
+          </div>
+          </div>
+          
+            <div class="container my-4">
+              <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12 ">
+                  <h1 style="text-align: center;">HTML</h1>
+                  <div class="card" style="width: 18rem;">
+                    <img src="pictures/HTML5_logo_and_wordmark.svg" height="200rem" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">HTML</h5>
+                      <p class="card-text">The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser</p>
+                      <a href="components/sorrypage.html" class="btn btn-success"><i class="fas fa-arrow-right"></i> open</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 ">
+                  <h1 style="text-align: center;">CSS</h1>
+                  <div class="card" style="width: 18rem;">
+                    <img src="pictures/CSS3_logo_and_wordmark.svg" height="200rem" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">CCS</h5>
+                      <p class="card-text">Cascading Style Sheets is a style sheet language used for the presentation of a document written in a markup language(HTML).</p>
+                      <a href="components/sorrypage.html" class="btn btn-success"><i class="fas fa-arrow-right"></i> open</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 ">
+                  <h1 style="text-align: center;">Javascript</h1>
+                  <div class="card" style="width: 18rem;">
+                    <img src="pictures/javascript.png.opdownload" height="200rem" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">JS</h5>
+                      <p class="card-text">JS is a programming language that is one of the core technologies of the World WWW, alongside HTML and CSS. 98% of websites use JS</p>
+                      <a href="components/sorrypage.html" class="btn btn-success"><i class="fas fa-arrow-right"></i> open</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 ">
+                  <h1 style="text-align: center;">Nodejs</h1>
+                  <div class="card" style="width: 18rem;">
+                    <img src="pictures/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6261746e30353030302f696d6167652f75706c6f61642f76313539363633323535342f395f68617a66696b2e706e67.png" height="200rem" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">NODEJS</h5>
+                      <p class="card-text">Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine.</p>
+                      <a href="components/sorrypage.html" class="btn btn-success"><i class="fas fa-arrow-right"></i> open</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 ">
+                  <h1 style="text-align: center;">Express</h1>
+                  <div class="card" style="width: 18rem;">
+                    <img src="pictures/pngegg (1).png" class="card-img-top" height="200rem" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">EXPRESS</h5>
+                      <p class="card-text">Express, is a back end web application framework for Node.js, released as free and open-source software under the MIT License</p>
+                      <a href="components/sorrypage.html" class="btn btn-success"><i class="fas fa-arrow-right"></i> open</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 ">
+                  <h1 style="text-align: center;">Mongodb</h1>
+                  <div class="card" style="width: 18rem;">
+                    <img src="pictures/kisspng-mongodb-database-clip-art-computer-icons-nosql-5b900df9c897c4.0301692015361674178216.png" class="card-img-top" height="200rem" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">MONGODB</h5>
+                      <p class="card-text">MongoDB is a NoSQL(non-tabular) database program , MongoDB  uses  JSON-like  documents with optional  schemas.</p>
+                      <a href="components/sorrypage.html" class="btn btn-success"><i class="fas fa-arrow-right"></i> open</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 ">
+                  <h1 style="text-align: center;">Linode</h1>
+                  <div class="card" style="width: 18rem;">
+                    <img src="pictures/linode-seeklogo.com.svg" class="card-img-top" height="200rem" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">LINODE</h5>
+                      <p class="card-text">Linode, LLC is an American cloud hosting subsidiary of Akamai Technologies that provides virtual private servers.</p>
+                      <a href="components/sorrypage.html" class="btn btn-success"><i class="fas fa-arrow-right"></i> open</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 ">
+                  <h1 style="text-align: center;">Passport</h1>
+                  <div class="card" style="width: 18rem;">
+                    <img src="pictures/download.png" class="card-img-top" height="200rem" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">PASSPORT</h5>
+                      <p class="card-text">Passport is authentication middleware for Node.js. Extremely flexible, Passport can bE dropped in to any Express-based web-app.</p>
+                      <a href="components/sorrypage.html" class="btn btn-success"><i class="fas fa-arrow-right"></i> open</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<div class="container-fluid my-5">
+  <!-- Footer -->
+  <footer
+          class="text-center text-lg-start text-dark"
+          style="background-color: #ECEFF1"
+          >
+    <!-- Section: Social media -->
+    <section
+             class="d-flex justify-content-between p-4 text-white"
+             style="background-color: #21D192"
+             >
+      <!-- Left -->
+      <div class="me-5">
+        <span>Get connected with us on social networks:</span>
       </div>
+      <div>
+        <a href="https://www.linkedin.com/in/raj-nishad-b60383232/" target="_blank" class="text-white me-4">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/rajnishad24082003" target="_blank" class="text-white me-4">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold">Ready to work</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+              "Many of life’s failures are people who did not realize how close they were to success when they gave up."– Thomas A. Edison
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Products</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p>
+              <a href="components/sorrypage.html" class="text-dark">Static web pages</a>
+            </p>
+            <p>
+              <a href="components/sorrypage.html" class="text-dark">Full-stack websites</a>
+            </p>
+            <p>
+              <a href="components/sorrypage.html" class="text-dark">Back-end</a>
+            </p>
+            <p>
+              <a href="components/sorrypage.html" class="text-dark">Bootstrap</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Useful links</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p>
+              <a href="components/sorrypage.html" class="text-dark">Your Account</a>
+            </p>
+            <p>
+              <a href="components/sorrypage.html" class="text-dark">Games</a>
+            </p>
+            <p>
+              <a href="components/sorrypage.html" class="text-dark">npm commands</a>
+            </p>
+            <p>
+              <a href="components/sorrypage.html" class="text-dark">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Contact</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p><i class="fas fa-home mr-3"></i>Virar-401303, palghar , maharastra</p>
+            <p><i class="fas fa-envelope mr-3"></i> rajnishad24082003@gmail.com</p>
+            <p><i class="fas fa-phone mr-3"></i> +91 8169144969</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: rgba(0, 0, 0, 0.2)"
+         >
+      <p class="text-dark" style="cursor: pointer;"
+         ><i class="fas fa-arrow-up"></i>End</p
+        >
     </div>
-    <script type='text/javascript' src='//d3js.org/d3.v3.min.js'></script>
-    <script type='text/javascript' src='//d3js.org/topojson.v1.min.js'></script>
-    <script type='text/javascript' src='planetaryjs.min.js'></script>
-    <script src="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script type='text/javascript' src='particles.js'></script>
-    <script type='text/javascript' src='globe.js'></script>
-  </body>
+  </footer>
+</div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
 </html>

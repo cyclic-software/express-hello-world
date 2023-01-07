@@ -1,43 +1,92 @@
-const express = require('express')
+const express = require("express");
+const dotenv = require("dotenv");
 const path = require("path");
-const app = express()
+const MongoStore = require("connect-mongo");
+const mongoose = require("mongoose");
+const session = require("express-session");
+dotenv.config({path:"./configFolder/config.env"});
+const  exphbs =  require('express-handlebars');
+const port = process.env.PORT || 3000;
+//passport
+const passport = require("passport");
+require("./configFolder/passport")(passport);
+//passport
 
-// #############################################################################
-// Logs all request paths and method
-app.use(function (req, res, next) {
-  res.set('x-timestamp', Date.now())
-  res.set('x-powered-by', 'cyclic.sh')
-  console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
-  next();
-});
 
-// #############################################################################
-// This configures static hosting for files in /public that have the extensions
-// listed in the array.
-var options = {
-  dotfiles: 'ignore',
-  etag: false,
-  extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
-  index: ['index.html'],
-  maxAge: '1m',
-  redirect: false
+//database
+const connected = require("./configFolder/database");
+const connectToDataBase = require("./configFolder/database");
+//database
+
+
+const app = express();
+
+
+//dotenv
+connectToDataBase();
+//dotenv
+
+
+app.use(express.urlencoded({extended:false}));
+app.use(express.static("./public"));
+
+
+const isloggedin = (req,res,next)=>{
+if(req.isAuthenticated())
+{
+    next();
 }
-app.use(express.static('public', options))
+else
+{
+    res.sendStatus(401);
+}
+}
 
-// #############################################################################
-// Catch all handler for all other request.
-app.use('*', (req,res) => {
-  res.json({
-      at: new Date().toISOString(),
-      method: req.method,
-      hostname: req.hostname,
-      ip: req.ip,
-      query: req.query,
-      headers: req.headers,
-      cookies: req.cookies,
-      params: req.params
-    })
-    .end()
+
+app.use(session({secret:"cats",
+resave:false,
+saveUninitialized:false,
+store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI
+})
+}));
+
+
+app.use(passport.initialize());
+app.use(passport.session())
+
+
+app.get("/auth/google",(req,res,next)=>{
+    if(req.isAuthenticated())
+    {
+        res.redirect("/on_signin_pages/storiesPage/user_typed_data");
+    }
+    else
+    {
+        next();
+    }
+},passport.authenticate('google',{scope:["profile"]}))
+app.engine(".hbs",exphbs.engine({defaultLayout:"main",extname:".hbs"}));
+app.set("view engine",".hbs");
+app.get("/google/callback",passport.authenticate("google",{failureRedirect:"/components/signin"}),(req,res)=>{
+   res.redirect("/on_signin_pages/storiesPage/user_typed_data");
 })
 
-module.exports = app
+
+app.get("/components/sigin",(req,res)=>{
+    res.sendFile("/public/components/signin.html",{root:path.join(__dirname)})
+})
+app.use("/on_signin_pages/storiesPage/user_typed_data",require("./folder_for_dashboard/routerforuserdata"));
+
+
+app.get("/logout",(req,res)=>{
+    req.logout(function(err) {
+        if (err) { return next(err);}
+            res.redirect("/components/sigin");
+        })
+    })
+
+    
+app.listen(port,()=>{
+    console.log(`server listening on port ${port}`);
+})

@@ -1,0 +1,28 @@
+.iconimg{
+    width: 4rem;
+}
+.bg-myme{
+    background-color: #2ddea9;
+}
+.bg-circleicon{
+    background-color: #189671;
+}
+.boltByMe{
+    font-weight: bolder;
+    text-decoration: none;
+}
+#body{
+    background-color: #f5fdfb;
+}
+.imgwidth
+{
+    width: 50vw;
+}
+@media only screen and (max-width: 768px) {
+.imgwidth{
+      width: 95vw;
+    }
+  }
+.textCenter{
+    text-align: center;
+}

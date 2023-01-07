@@ -1,0 +1,34 @@
+
+<div style="margin-top: 5rem;">
+  <h2>Welcome</h2>
+  <div class="container">
+  <div class="py-5">
+    <div class="row d-flex">
+      <div class="col-lg-6">
+        <div class="card" style="border: none;">
+          <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+            {{#each datavalue}}
+            <div>
+            <div class="d-flex justify-content-between">
+              <p class="small mb-1">{{user.displayname}}</p>
+              <p class="small mb-1 text-muted">{{createdTime}}</p>
+            </div>
+            <div class="d-flex flex-row justify-content-start">
+              <img src="{{user.userimage}}"
+                alt="avatar 1" class="rounded-circle" style="width: 45px; height: 100%;">
+              <div>
+                <p class="small p-2 ms-3 mb-3 rounded-3" style="background-color: #f5f6f7;">
+                 title :{{title}} <br> message :{{message}}</p>
+              </div>
+            </div>
+            </div>
+            {{else}}
+            <p>no text available</p>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

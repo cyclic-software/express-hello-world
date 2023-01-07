@@ -1,0 +1,40 @@
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color: #199a74;">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/on_signin_pages/storiesPage/user_typed_data" style="color: white;">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/" style="color: white;">mainpage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/on_signin_pages/storiesPage/user_typed_data/" style="color: white;">public chats</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/on_signin_pages/storiesPage/user_typed_data/{{reqid}}" style="color: white;">your chats</a>
+        </li>
+      </ul>
+      <li class="nav-item active btn m-1" style="list-style-type: none;background-color: rgb(195, 225, 253);">
+        <a href="/logout" class="" style="text-decoration: none;">sign out</a>
+      </li>
+            <li class="my-2 d-flex align-items-center btn" style="background-color: white;"><img
+                src="{{reqimage}}" class="rounded-circle img-fluid me-1"
+                height='25' width='25'><span> {{reqname}}</span>
+                </li>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

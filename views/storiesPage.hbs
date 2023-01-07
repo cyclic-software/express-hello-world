@@ -1,0 +1,89 @@
+<form method="post" action="/on_signin_pages/storiesPage/user_typed_data">
+<div class="container-fluid invisible_function" style="  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: end;
+  transition: var(--transition);
+  visibility: visible;
+  z-index: 1;">
+  <div class="row" style="">
+    <div class="col-lg-9"></div>
+<div class="border border-dark p-3 col-lg-3 rounded" style="height: auto;width: 20rem;margin: 2rem;background-color: white;">
+  <div class="mb-3 modal-footer">
+    <a class="btn button_function">
+    <i class="fas fa-close"></i>
+    </a>
+  </div>
+  <!--<div name="googleid" value={{googleid2}}></div> -->
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Title</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="title" name="title">
+</div>
+<div class="mb-3" >
+  <label for="exampleFormControlTextarea1" class="form-label" >Message</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="message" name="message" ></textarea>
+  <div class="" style="width: 100%; text-align: center;">
+  <button type="submit" class="btn add_btn" style="margin-top: 0.5rem;background-color: #189671;color: azure;">add</button>
+  </div>
+  <div class="mb-3 modal-footer visible_function" style="visibility: hidden;">
+  <a class=" rounded-circle btn" style="background-color: #189671;">
+  <i class="fas fa-plus " ></i>
+  </a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</form>
+
+<div style="margin-top: 5rem;">
+  <h2>Welcome,{{reqname}}</h2>
+  <div class="container">
+  <div class="py-5">
+    <div class="row d-flex">
+      <div class="col-lg-6">
+        <div class="card" style="border: none;">
+          <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+            {{#each datavalue}}
+            <div>
+            <div class="d-flex justify-content-between">
+              <p class="small mb-1">{{user.displayname}}</p>
+              <p class="small mb-1 text-muted">{{createdTime}}</p>
+            </div>
+            <div class="d-flex flex-row justify-content-start">
+              <img src="{{user.userimage}}"
+                alt="user" class="rounded-circle" style="width: 45px; height: 100%;">
+              <div>
+                <p class="small p-2 ms-3 mb-3 rounded-3" style="background-color: #f5f6f7;">
+                 title :{{title}} <br> message :{{message}}</p>
+              </div>
+            </div>
+            </div>
+            {{else}}
+            <p>no text available</p>
+            {{/each}}
+<!--
+            <div class="d-flex justify-content-between">
+              <p class="small mb-1 text-muted">23 Jan 2:05 pm</p>
+              <p class="small mb-1">Johny Bullock</p>
+            </div>
+            <div class="d-flex flex-row justify-content-end mb-4 pt-1">
+              <div>
+                <p class="small p-2 me-3 mb-3 text-white rounded-3 bg-warning">Thank you for your believe in
+                  our
+                  supports</p>
+              </div>
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                alt="avatar 1" style="width: 45px; height: 100%;">
+            </div>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
