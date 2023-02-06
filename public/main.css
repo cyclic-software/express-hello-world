@@ -1,16 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap");
 
 body {
-  background-color: blue;
+  background-color: #FFBDBD;
   text-align: center;
-  font-weight: 700;
+  height: 100vh;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 18rem;
 }
 
 #button {
-  background-color:orange;
-  width: 100px;
+  background-color:#002233;
+  /* width: 100px; */
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #000;
+}
+
+span {
+  font-weight: bold;
+  padding: 2rem 0rem;
 }
 
 audio {
-  height: 100px;
+  background-color: #B7E8FF;
 }
