@@ -15,7 +15,6 @@ app.use(function (req, res, next) {
 });
 
 
-
 // ####### config ->
 
 app.use(methodOvrd('_method'));
@@ -61,14 +60,6 @@ const blogSchema = new mongoose.Schema({
 });
 
 const Blog = mongoose.model('Blog',blogSchema);
-
-// Blog.create({
-// 	title: 'First Blog',
-// 	image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80',
-// 	body: 'This is really a nice blog in my opinion'
-// });
-
-
 
 app.get('/',(req,res)=>{
 		
