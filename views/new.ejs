@@ -1,0 +1,24 @@
+<%- include("partials/header") %>
+
+
+<div class="ui segment main text container">
+	<h1 class="ui header">New Post</h1>
+	<form class="ui form" action="/blogs" method="post">
+	  <div class="field">
+		<label>Title</label>
+		<input type="text" name="blog[title]" required>
+	  </div>
+	  <div class="field">
+		<label>Image URL</label>
+		<input type="text" name="blog[image]" required>
+	  </div>
+	  <div class="field">
+		<label>Description</label>
+		  <textarea name="blog[body]" required></textarea>
+	  </div>
+		
+	  <button class="ui purple big button" type="submit">Submit</button>
+	</form>
+</div>
+	
+<%- include("partials/footer") %>

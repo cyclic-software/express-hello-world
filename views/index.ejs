@@ -1,0 +1,47 @@
+<%- include("partials/header") %>
+
+
+<div class="ui main text container">
+	<h1 style="margin-top: 100px;" class="ui header">
+		RESTful Blog App	
+	</h1>
+
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit eaque quidem adipisci aperiam rerum dolore, distinctio quod natus! Ex, iusto?
+	<div class="ui segment items">
+		<% blogs.forEach(function(Blog){  %>
+		<div class="item">
+			<div class="image">
+				<img src="<%= Blog.image %>">
+			</div>
+			<div class="content">
+				<h2 class="ui header">
+					<%=	Blog.title %>
+				</h2>
+				<div class="meta mb-2">
+					<span><%= Blog.created.toDateString() %></span>
+				 </div>
+				<div class="description">
+					<p>
+						<%= Blog.body.substring(0,70) %>
+					</p>
+				</div>
+				<div class="extra">
+					<a class="ui basic violet button" href="/blogs/<%= Blog.id %>">Show Post <i class="external square alternate icon"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+		<%	});  %>
+	</div>
+
+	
+
+
+</div>
+
+
+<%- include("partials/footer") %>
+
+
+
+	
