@@ -4,7 +4,6 @@ const express = require('express'),
 	  app = express(),
 	  bodyParser = require('body-parser'),
 	  mongoose = require('mongoose'),
-    dotenv = require('dotenv');
 
 // #############################################################################
 // Logs all request paths and method
@@ -18,7 +17,6 @@ app.use(function (req, res, next) {
 
 
 // ####### config ->
-dotenv.config();
 
 app.use(methodOvrd('_method'));
 app.set('view engine','ejs');
