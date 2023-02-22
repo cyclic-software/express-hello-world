@@ -3,7 +3,7 @@ const express = require('express'),
 	  methodOvrd = require('method-override'),
 	  app = express(),
 	  bodyParser = require('body-parser'),
-	  mongoose = require('mongoose'),
+	  mongoose = require('mongoose');
 
 // #############################################################################
 // Logs all request paths and method
