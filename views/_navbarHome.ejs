@@ -1,0 +1,46 @@
+<section class="navigation w-full h-full text-text flex justify-between items-center relative font-work px-1 xs:px-5 sm:px-10">
+    <div class="logo w-[20%]">
+        <a href="/">
+            <h1>Borase Classes</h1>
+        </a>
+    </div>
+    <div class="right sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[40%] justify-between text-text text-sm items-center hidden sm:flex">
+        <a href="/#knowMore" class="text-text">About Us</a>
+        <a href="/previous-result" class="text-text">Previous Results</a>
+        <a href="#" class="text-text">Teachers</a>
+        <a href="/courses" class="text-text">Courses</a>
+        <a href="#" class="px-5 py-1 bg-a1 text-light">
+            <h1 href="#">Log In</h1>
+        </a>
+    </div>
+
+    <img src="./static/Icons/menu.svg" alt="" class="w-8 z-50 sm:hidden" id="menu">
+    <div class="absolute top-0 -right-[100%] w-screen h-screen z-20 flex flex-col bg-white items-center justify-center transition-all ease-in-out duration-300 sm:hidden" id="menuBar">
+            <a href="/#knowMore" class="text-text">About Us</a>
+            <a href="/previous-result" class="text-text">Previous Results</a>
+            <a href="#" class="text-text">Teachers</a>
+            <a href="/courses" class="text-text">Courses</a>
+            <a href="#" class="px-5 py-1 bg-a1 text-light">
+                <h1 href="#">Log In</h1>
+            </a>
+    </div>
+
+</section>
+
+<script>
+    let menu = document.getElementById('menu');
+    let menuBar = document.getElementById('menuBar');
+    menu.addEventListener('click',()=>{
+        if(menuBar.classList.contains('right-0')){
+            menu.setAttribute('src','./static/Icons/menu.svg')
+            menu.classList.remove('w-5');
+            menuBar.classList.remove('right-0');
+            menuBar.classList.add('-right-[100%]');
+        }else{
+            menuBar.classList.remove('-right-[100%]');
+            menuBar.classList.add('right-0');
+            menu.classList.add('w-5');
+            menu.setAttribute('src','./static/Icons/cross.svg')
+        }
+    })
+</script>
