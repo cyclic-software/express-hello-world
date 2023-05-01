@@ -10,6 +10,6 @@ Router.get('/courses',Controller.courses);
 
 Router.get('/previous-result', Controller.prevResult);
 
-// Router.use('/admin', require('./admin'));
+Router.use('/admin', require('./admin'));
 
 module.exports = Router;
