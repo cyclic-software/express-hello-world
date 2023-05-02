@@ -1,0 +1,54 @@
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Aileron-100';
+    src: url('../static/fonts/Aileron-UltraLight.otf');
+}
+@font-face {
+    font-family: 'Aileron-200';
+    src: url('../static/fonts/Aileron-Thin.otf');
+} 
+@font-face {
+    font-family: 'Aileron-300';
+    src: url('../static/fonts/Aileron-Light.otf');
+}
+@font-face {
+    font-family: 'Aileron-400';
+    src: url('../static/fonts/Aileron-Regular.otf');
+} 
+@font-face {
+    font-family: 'Aileron-500';
+    src: url('../static/fonts/Aileron-Heavy.otf');
+}
+@font-face {
+    font-family: 'Aileron-600';
+    src: url('../static/fonts/Aileron-Black.otf');
+}
+
+
+.font-prime-100 {
+    font-family: 'Aileron-100';
+}
+.font-prime-200 {
+    font-family: 'Aileron-200';
+}
+.font-prime-300 {
+    font-family: 'Aileron-300';
+}
+.font-prime-400 {
+    font-family: 'Aileron-400';
+}
+.font-prime-500 {
+    font-family: 'Aileron-500';
+}
+.font-prime-600 {
+    font-family: 'Aileron-600';
+}
+
+.font-work{
+    font-family: 'Work Sans', sans-serif;
+}

@@ -1,0 +1,103 @@
+<style>
+    section.home::-webkit-scrollbar{
+        display: none;
+    }
+</style>
+<section class="home w-screen h-screen overflow-y-scroll overflow-x-hidden select-none scroll-smooth flex flex-col justify-between">
+    <nav class="h-[8%] w-full ">
+        <%- include('_navbarHome') %>
+    </nav>
+    <!-- ---------------------------- -->
+
+    <div class="h-[80%] flex px-1 sm:px-4 md:px-8 lg:px-12 justify-around">
+        <div class="w-full h-full lg:w-[80%] flex flex-col overflow-hidden">
+            <ul class="flex flex-wrap text-sm font-medium text-center border-b dark:border-slate-500 text-gray-400" id="results">
+                <% for( let i = 0; i < results.length; i++ ) { %>
+                    <% if (i == 0) { %>
+                        <li class="mr-2 relative activeResult1" id="<%= results[i]._id %>">
+                            <div aria-current="page" class="inline-block p-4 rounded-t-lg activeResult bg-s text-white" style="order:<%= results[i].order %>;"><%= results[i].name %></div>
+                        </li>
+                    <% } else { %>
+                        <li class="mr-2 relative" id="<%= results[i]._id %>" style="order:<%= results[i].order %>;">
+                            <div class="inline-block p-4 rounded-t-lg hover:bg-s hover:text-white"><%= results[i].name %></div>
+                        </li>    
+                    <% } %>
+                <% } %>
+            </ul>
+            <div class="w-full h-[90%]">
+
+                <% for( let i = 0; i < results.length; i++ ) { %>
+                    
+                        <% if (i == 0) { %>
+                            <div class="w-full h-full flex justify-center items-center flex-wrap overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-thumb-slate-500 scrollbar-track-transparent activeResult" id="<%= "studentAt" + results[i]._id %>">
+                        <% } else { %>
+                            <div class="w-full h-full justify-center items-center flex-wrap overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-thumb-slate-500 scrollbar-track-transparent hidden" id="<%= "studentAt" + results[i]._id %>">
+                        <% } %>   
+                                <% for( let j = 0; j < results[i].students.length; j++ ) { %>
+
+                                    <div class="flex flex-col justify-center items-center bg-s p-5 rounded-lg m-2 relative min-w-[12rem] " style="order:<%= results[i].students[j].order %>;">
+                                        
+                                        <img src="<%= results[i].students[j].image %>" alt="" class="w-32 h-32 mb-5 rounded-full">
+                                        <h1 class="font-prime-500 text-light text-xl"><%= results[i].students[j].name %></h1>
+                                        <h2 class="font-prime-500 text-light text-xl"><%= results[i].students[j].percentage %></h2>
+                                        <% if (results[i].students[j].specialMessage.length != 0) { %>
+                                            <div class="p-2 special absolute top-0 right-0 w-[50%] h-[40%] flex justify-center items-center bg-p rounded-br-full rounded-bl-full rounded-tl-full opacity-90">
+                                                <h1 class="text-center font-prime-500 text-light text-sm "><%= results[i].students[j].specialMessage %></h1>
+                                            </div>
+                                        <% } %>
+                                    </div>
+
+                                <% } %>
+                        </div>
+                    
+                <% } %>
+            
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ------------------------------- -->
+    <footer class="w-full h-[8%]">
+        <%- include('_footer') %>
+    </footer>
+</section>
+<script>
+    let results1 = document.querySelectorAll('#results div');
+    let activeResult  = document.querySelector('.activeResult');
+    
+    results1.forEach(ele => {
+        ele.addEventListener('click', (e) => {
+            const list = ['hover:bg-s','hover:text-white'];
+            const list2 = ['activeResult','bg-s', 'text-white'];
+            ele.classList.add(...list2);
+            ele.classList.remove(...list);
+            activeResult.classList.add(...list);
+            activeResult.classList.remove(...list2);
+            ele.classList.add('activeResult');
+            activeResult = ele;
+        })
+    });
+
+
+    let results = document.querySelectorAll('#results>li');
+    let activeEle = results[0];
+
+    results.forEach(ele => {
+        ele.addEventListener('click',() => {
+            let divID = "studentAt"+ele.id;
+            let div = document.getElementById(divID);
+
+            let activeDivId = "studentAt"+activeEle.id;
+            let activeDiv = document.getElementById(activeDivId);
+
+            activeDiv.classList.add('hidden');
+            activeDiv.classList.remove('flex');
+
+            div.classList.remove('hidden');
+            div.classList.add('flex');
+
+            activeEle = ele;
+        })
+    });
+</script>
