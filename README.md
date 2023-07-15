@@ -7,7 +7,7 @@ This is a basic starter Expressjs app with:
 - Catch-all handler that echoes request info
 
 ## Local Quick Start
-
+ 
 - Clone to your local
 - Install dependencies `npm install`
 - Run locally `npm serve`
