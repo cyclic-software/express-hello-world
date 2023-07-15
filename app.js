@@ -18,7 +18,7 @@ var options = {
   extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
   index: ['index.html'],
   maxAge: '1m',
-  redirect: false
+  redirect: false 
 }
 app.use(express.static('public', options))
 
