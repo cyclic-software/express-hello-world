@@ -1,7 +1,6 @@
 const express = require('express')
 const path = require("path");
 const app = express()
-
 // #############################################################################
 // Logs all request paths and method
 app.use(function (req, res, next) {
