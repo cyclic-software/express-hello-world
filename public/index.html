@@ -1,33 +1,630 @@
-<!doctype html>
-<html lang=en>
-  <head>
-    <meta charset=utf-8>
-    <title>Cyclic: Hello World</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/main.css">
-    <link rel="icon" href="/favicon.ico" />
-  </head>
-  <body>
-    <div id="hello-wrapper">
-      <div id="particles-js"></div>
-      <div class="content position-absolute w-100 top-0 pt-5">
-        <div class="cta">
-          <div id="hello" class="typewriter pb-3">
-            Hello World!
-          </div>
-          <a class="btn btn-primary mb-5" href="//app.cyclic.sh/api/login">Sign in to Cyclic</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="_assets/img/favicon/favicon-16x16.png" sizes="16x16"/>
+    <link rel="icon" type="image/png" href="_assets/img/favicon/favicon-32x32.png" sizes="16x16"/>
+
+    <title>Levidio Wedding Vol 2 - Website Templates</title>
+
+    <!-- CSS  -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- Root-Icon -->
+    <link rel="stylesheet" href="https://cdn.rootpixel.net/assets/rooticon/v2/rooticon.css">
+    <!-- Tiny slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+    <!-- Lightgallery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css" integrity="sha512-kwJUhJJaTDzGp6VTPBbMQWBFUof6+pv0SM3s8fo+E6XnPmVmtfwENK0vHYup3tsYnqHgRDoBDTJWoq7rnQw2+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Aos Animation on scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- App -->
+    <link rel="stylesheet" href="_assets/css/app.min.css">
+</head>
+<body id="index" class="opening-show" style="cursor: default !important;">
+<!-- <body id="index"> -->
+
+    <section id="opening">
+        <div class="container text-white text-center flex-grow-1" data-aos="zoom-in" data-aos-duration="1200">
+            <h5>Halo, <span id="guest">Justin Gouse</span></h5>
+            <h5 class="mb-7">Kami mengundang Anda ke Acara Pernikahan kami</h5>
+            <h1 class="font-type-secondary">John Doe & Jane Doe</h1>
+            
+            <h5 class="mt-6 mb-8">30 Mei 2022</h5>
+
+            <button id="btn-open-opening" class="btn btn-sm btn-primary mb-10">
+                <i class="ri ri-mail mr-1"></i> Buka Undangan
+            </button>
         </div>
-        <div id="world">
-          <canvas id='rotatingGlobe' style='cursor: move;'></canvas>
+
+        <img src="_assets/img/decoration/leaf-top-left-1.png" alt="" class="decoration" id="opening-decoration-1" data-aos="fade-down-right" data-aos-duration="1200">
+        <img src="_assets/img/decoration/leaf-top-right-1.png" alt="" class="decoration" id="opening-decoration-2" data-aos="fade-down-left" data-aos-duration="1200">
+    </section>
+
+    <!-- header -->
+    <header id="header">
+        <nav class="navbar navbar-expand-md">
+            <div class="container">
+                <a href="#index" class="navbar-brand d-md-none">
+                    <h4 class="font-type-secondary">Our Invitation</h4>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <h6 class="mb-0"><i class="ri ri-menu"></i></h6>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#section-5">CERITA KITA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#section-2">GALERI</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#section-3">JADWAL PERNIKAHAN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#section-6">RSVP</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container d-flex flex-column align-items-stretch justify-content-center pt-6 pt-lg-8 mb-16">
+            <div class="text-white text-center pt-10" data-aos="zoom-in" data-aos-duration="1200">
+                <h5 class="mb-5">Pernikahan</h5>
+                <h1 class="font-type-secondary mb-5">John Doe & Jane Doe</h1>
+                <h5 data-aos="fade-up">Save the Date</h5>
+                
+                <h5 class="fw-bold mt-8">30 Mei 2022</h5>
+            </div>
         </div>
-      </div>
-    </div>
-    <script type='text/javascript' src='//d3js.org/d3.v3.min.js'></script>
-    <script type='text/javascript' src='//d3js.org/topojson.v1.min.js'></script>
-    <script type='text/javascript' src='planetaryjs.min.js'></script>
-    <script src="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script type='text/javascript' src='particles.js'></script>
-    <script type='text/javascript' src='globe.js'></script>
-  </body>
+
+        <!-- decoration -->
+        <img src="_assets/img/decoration/leaf-top-left-1.png" alt="" class="decoration" id="header-decoration-1" data-aos="fade-down-right" data-aos-duration="1200">
+        <img src="_assets/img/decoration/leaf-top-right-1.png" alt="" class="decoration" id="header-decoration-2" data-aos="fade-down-left" data-aos-duration="1200">
+    </header>
+    <!-- end of header -->
+
+    <!-- section-wrapper-1 : contains wrapped section-1, section-2, section-3 -->
+    <section id="section-wrapper-1">
+        <!-- section-1 : contains spouse profile -->
+        <section id="section-1">
+            <div class="container text-center">
+                <h3 class="font-type-secondary fw-bold mb-10">Pasangan yang Berbahagia</h3>
+                <div class="row align-items-center justify-content-center py-8 overflow-hidden">
+
+                    <div class="col col-md col-xl-4 align-self-start d-flex flex-column align-items-center">
+                        <div class="img-wrapper img-wrapper-spouse" data-aos="fade-up" data-aos-duration="1200">
+                            <img src="_assets/img/spouse/man.jpg" alt="">
+                        </div>
+                        <h3 class="font-type-secondary font-bold my-4 my-lg-6" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1300">John Doe</h3>
+                        <h5 class="mb-3" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1400">Putra dari</h5>
+                        <h5 class="mb-3" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1200">Bpk. Cody Fisher</h5>
+                        <h5 data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1300">Ibu Jane Cooper</h5>
+                        <div class="mt-4" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1400">
+                            <a href=""><img src="_assets/img/icons/ig.svg" alt="" class="w-3rem"></a>
+                            <a href=""><img src="_assets/img/icons/fb.svg" alt="" class="w-3rem mx-1 mx-md-3"></a>
+                            <a href=""><img src="_assets/img/icons/twitter.svg" alt="" class="w-3rem"></a>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <h1 class="font-type-secondary">&</h1>
+                    </div>
+                    <div class="col col-md col-xl-4 align-self-start d-flex flex-column align-items-center">
+                        <div class="img-wrapper img-wrapper-spouse" data-aos="fade-up" data-aos-duration="1200">
+                            <img src="_assets/img/spouse/woman.jpg" alt="">
+                        </div>
+                        <h3 class="font-type-secondary font-bold my-4 my-lg-6" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1300">Jane Doe</h3>
+                        <h5 class="mb-3" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1400">Putri dari</h5>
+                        <h5 class="mb-3" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1200">Bpk. Cody Fisher</h5>
+                        <h5 data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1300">Ibu Jane Cooper</h5>
+                        <div class="mt-4" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1400">
+                            <a href=""><img src="_assets/img/icons/ig.svg" alt="" class="w-3rem"></a>
+                            <a href=""><img src="_assets/img/icons/fb.svg" alt="" class="w-3rem mx-1 mx-md-3"></a>
+                            <a href=""><img src="_assets/img/icons/twitter.svg" alt="" class="w-3rem"></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- decoration -->
+            <img src="_assets/img/decoration/leaf-left-1.png" alt="" class="decoration" id="section-1-decoration-1" data-aos="fade-right" data-aos-duration="1200">
+            <img src="_assets/img/decoration/leaf-right-1.png" alt="" class="decoration" id="section-1-decoration-2" data-aos="fade-left" data-aos-duration="1200">
+        </section>
+        <!-- end of section-1 -->
+
+        <!-- section-2 : contains gallery -->
+        <section id="section-2">
+            <div class="container text-dark">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-auto" data-aos="fade-up" data-aos-duration="1200">
+                        <h1 class="font-type-secondary fw-semibold">Galeri</h1>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1300">
+                        <h6 class="fw-light">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. At suspendisse metus vulputate sed. Urna quam varius quisque pretium venenatis. Tortor, sit purus, at dolor, viverra nulla ornare lacus. Integer.
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-xxl" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1400">
+                <div class="row justify-content-end">
+                    <div class="col-md-auto">
+                        <div class="w-6rem"></div>
+                    </div>
+                    <div class="col-lg">
+                        <div id="tinyslider-container-gallery">
+                            <div class="tinyslider-item">
+                                <img src="_assets/img/gallery/1.jpg" alt="" class="tinyslider-item-img">
+                                <div class="tinyslider-item-label">
+                                    <div class="row">
+                                        <div class="col-auto"><img src="_assets/img/icons/pin-white.svg" alt="" class="mr-1"></div>
+                                        <div class="col">Bukit Moko, Bandung, Jawa Barat</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tinyslider-item">
+                                <img src="_assets/img/gallery/2.jpg" alt="" class="tinyslider-item-img">
+                                <div class="tinyslider-item-label">
+                                    <div class="row">
+                                        <div class="col-auto"><img src="_assets/img/icons/pin-white.svg" alt="" class="mr-1"></div>
+                                        <div class="col">Bukit Moko, Bandung, Jawa Barat</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div id="tinyslider-controls-gallery" class="row gx-0 justify-content-end">
+                    <div class="col-auto">
+                        <button class="btn btn-primary p-3 rounded-0">
+                            <img src="_assets/img/icons/arrow-left.svg" class="w-3rem" alt="">
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary p-3 rounded-0">
+                            <img src="_assets/img/icons/arrow-right.svg" class="w-3rem" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of section-2 -->
+        
+        <!-- section-3 : contains schedule -->
+        <section id="section-3">
+            <div class="container-xxl text-center text-md-start mb-6 mb-md-16" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1200">
+                <div class="row">
+                    <div class="col-md-4 col-xl-auto mb-6 mb-md-0">
+                        <div class="obj-fit obj-fit-cover obj-pos-top w-100 h-32rem h-sm-46rem w-xl-46rem h-md-46rem">
+                            <img src="_assets/img/misc/section-schedule.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md offset-lg-1">
+                        <h2 class="font-type-secondary fw-bold mb-10">Jadwal Pernikahan</h2>
+                        
+                        <div class="row gx-xl-5">
+                            <div class="col-md mb-6 mb-md-0">
+                                <h4 class="font-type-secondary fw-bold">Akad Nikah</h4>
+                                <div class="text-md mt-4 mb-6">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl a elementum placerat quis arcu enim, commodo risus.
+                                </div>
+                                <div class="row gx-lg-5 align-items-center mb-6">
+                                    <div class="col-md-auto mb-3 mb-md-0"><img src="_assets/img/icons/calendar.svg" class="w-2rem" alt=""></div>
+                                    <div class="col">
+                                        <div class="text-md fw-semibold text-spacing-default mb-2">HARI DAN TANGGAL</div>
+                                        <div class="text-md fw-light">Minggu, 30 Mei 2021</div>
+                                    </div>
+                                </div>
+                                <div class="row gx-lg-5 align-items-center mb-6">
+                                    <div class="col-md-auto mb-3 mb-md-0"><img src="_assets/img/icons/clock.svg" class="w-2rem" alt=""></div>
+                                    <div class="col">
+                                        <div class="text-md fw-semibold text-spacing-default mb-2">WAKTU</div>
+                                        <div class="text-md fw-light">07.00 - Selesai</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <h4 class="font-type-secondary fw-bold">Resepsi</h4>
+                                <div class="text-md mt-4 mb-6">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl a elementum placerat quis arcu enim, commodo risus.
+                                </div>
+                                <div class="row gx-lg-5 align-items-center mb-6">
+                                    <div class="col-md-auto mb-3 mb-md-0"><img src="_assets/img/icons/calendar.svg" class="w-2rem" alt=""></div>
+                                    <div class="col">
+                                        <div class="text-md fw-semibold text-spacing-default mb-2">HARI DAN TANGGAL</div>
+                                        <div class="text-md fw-light">Minggu, 30 Mei 2021</div>
+                                    </div>
+                                </div>
+                                <div class="row gx-lg-5 align-items-center mb-6">
+                                    <div class="col-md-auto mb-3 mb-md-0"><img src="_assets/img/icons/clock.svg" class="w-2rem" alt=""></div>
+                                    <div class="col">
+                                        <div class="text-md fw-semibold text-spacing-default mb-2">WAKTU</div>
+                                        <div class="text-md fw-light">07.00 - Selesai</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1400">
+                <div class="row justify-content-between">
+                    <div class="col-auto d-none d-md-block">
+                        <img src="_assets/img/decoration/branchy.png" alt="" class="w-10rem w-lg-20rem">
+                    </div>
+                    <div class="col-md col-lg-7">
+                        <div class="mapouter">
+                            <div class="gmap_canvas w-100 h-24rem h-lg-38rem">
+                                <iframe 
+                                    class="h-24rem h-md-38rem"
+                                    width="100%" 
+                                    id="gmap_canvas" 
+                                    src="https://maps.google.com/maps?q=Rootpixel&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                                    frameborder="0"
+                                    scrolling="no" 
+                                    marginheight="0" marginwidth="0">
+                                </iframe>
+                                <a href="https://2piratebay.org"></a><br><style>.gmap_canvas {overflow:hidden;background:none!important;}</style>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of section-3 -->
+    </section>    
+    <!-- end of section-wrapper-1 -->
+
+    <!-- section-4 : contains countdown -->
+    <section id="section-4">
+        <div class="container">
+            <div id="countdown-row" class="row gx-2 gx-sm-4 align-items-center justify-content-center my-5">
+                <div class="col-auto" data-aos="fade-up" data-aos-duration="1100">
+                    <div class="card card-countdown">
+                        <div class="card-body">
+                            <h1 data-days>120</h1>
+                            <h5>HARI</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto px-1 d-none d-sm-block" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1200">
+                    <div class="divider divider-countdown">:</div>
+                </div>
+                <div class="col-auto" data-aos="fade-up" data-aos-duration="1300">
+                    <div class="card card-countdown">
+                        <div class="card-body">
+                            <h1 data-hours>66</h1>
+                            <h5>JAM</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto px-1 d-none d-sm-block" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1400">
+                    <div class="divider divider-countdown">:</div>
+                </div>
+                <div class="col-auto" data-aos="fade-up" data-aos-duration="1500">
+                    <div class="card card-countdown">
+                        <div class="card-body">
+                            <h1 data-minutes>66</h1>
+                            <h5>MENIT</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto px-1 d-none d-sm-block" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1600">
+                    <div class="divider divider-countdown">:</div>
+                </div>
+                <div class="col-auto" data-aos="fade-up" data-aos-duration="1700">
+                    <div class="card card-countdown">
+                        <div class="card-body">
+                            <h1 data-seconds>66</h1>
+                            <h5>DETIK</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of section-4 -->
+
+    <!-- section-wrapper-2 : contains wrapped section-5, section-6, section-7 -->
+    <section id="section-wrapper-2">
+        <!-- section-5 : contains story -->
+        <section id="section-5">
+            <div class="container">
+                <h2 class="font-type-secondary fw-bold text-dark text-center mb-8 mb-lg-10" data-aos="fade-up" data-aos-offset="-100" data-aos-duration="1400">
+                    Cerita Kita
+                </h2>
+
+                <div class="row gx-0 mb-10 mb-lg-16" data-aos="fade-left" data-aos-offset="-50" data-aos-duration="1400">
+                    <div class="col-lg-4">
+                        <div class="obj-fit obj-fit-cover obj-pos-top w-100 h-24rem h-sm-32rem h-lg-50rem">
+                            <img src="_assets/img/misc/story-1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="card bg-black-500 rounded-0">
+                            <div class="card-body text-white p-lg-8">
+                                <h4 class="font-type-secondary fw-bold mb-6">Bertemu Dalam Satu Acara</h4>
+                                <h6 class="fw-light text-height-2">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra ac aliquam nec augue. Augue mattis morbi fusce amet pellentesque. Sit nunc enim id scelerisque volutpat diam imperdiet. Nulla tincidunt in non habitasse penatibus. Tincidunt ligula elementum scelerisque elit scelerisque. Lectus phasellus lobortis interdum tellus turpis urna. Ac adipiscing pharetra, fermentum habitant urna integer fames.
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-0 mb-10 mb-lg-16" data-aos="fade-right" data-aos-offset="-50" data-aos-duration="1400">
+                    <div class="col-lg-4 order-lg-2">
+                        <div class="obj-fit obj-fit-cover obj-pos-top w-100 h-24rem h-sm-32rem h-lg-50rem">
+                            <img src="_assets/img/misc/story-2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="card bg-black-500 rounded-0">
+                            <div class="card-body text-white p-lg-8">
+                                <h4 class="font-type-secondary fw-bold mb-6">Bertemu Dalam Satu Acara</h4>
+                                <h6 class="fw-light text-height-2">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra ac aliquam nec augue. Augue mattis morbi fusce amet pellentesque. Sit nunc enim id scelerisque volutpat diam imperdiet. Nulla tincidunt in non habitasse penatibus. Tincidunt ligula elementum scelerisque elit scelerisque. Lectus phasellus lobortis interdum tellus turpis urna. Ac adipiscing pharetra, fermentum habitant urna integer fames.
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-0 mb-10 mb-lg-16" data-aos="fade-left" data-aos-offset="-50" data-aos-duration="1400">
+                    <div class="col-lg-4">
+                        <div class="obj-fit obj-fit-cover obj-pos-top w-100 h-24rem h-sm-32rem h-lg-50rem">
+                            <img src="_assets/img/misc/story-3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="card bg-black-500 rounded-0">
+                            <div class="card-body text-white p-lg-8">
+                                <h4 class="font-type-secondary fw-bold mb-6">Bertemu Dalam Satu Acara</h4>
+                                <h6 class="fw-light text-height-2">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra ac aliquam nec augue. Augue mattis morbi fusce amet pellentesque. Sit nunc enim id scelerisque volutpat diam imperdiet. Nulla tincidunt in non habitasse penatibus. Tincidunt ligula elementum scelerisque elit scelerisque. Lectus phasellus lobortis interdum tellus turpis urna. Ac adipiscing pharetra, fermentum habitant urna integer fames.
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- decoration -->
+            <img src="_assets/img/decoration/leaf-right-1.png" alt="" class="decoration" id="section-5-decoration-1" data-aos="fade-left" data-aos-duration="1400">
+        </section>
+        <!-- end of section-5 -->
+
+        <!-- section-6 : contains RSVP -->
+        <section id="section-6">
+            <div class="container-xxl" data-aos="fade-up" data-aos-duration="1200">
+                <div class="row gx-lg-5 align-items-center">
+                    <div class="col-md-6 mb-6 mb-lg-0">
+                        <div class="obj-fit obj-fit-cover obj-pos-top w-100 h-26rem h-sm-32rem h-md-60rem h-xl-80rem">
+                            <img src="_assets/img/misc/rsvp.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-5 text-dark pl-lg-8">
+                        <h2 class="font-type-secondary">RSVP</h2>
+                        <h5 class="fw-light mt-6 mb-8">
+                            Apakah Anda akan hadir di acara pernikahan kami?
+                        </h5>
+                        <!-- form ucapan -->
+                        <form action="">
+                            <div class="mb-7">
+                                <input 
+                                    type="text"
+                                    placeholder="Nama" 
+                                    class="form-control">
+                            </div>
+                            <div class="mb-7">
+                                <input 
+                                    type="number"
+                                    placeholder="Nomor Handphone/WhatsApp" 
+                                    class="form-control">
+                            </div>
+                            <div class="my-7">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Ya, saya akan hadir
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Tidak, saya tidak bisa hadir
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-10">
+                                <input 
+                                    type="text"
+                                    placeholder="Tulis pesan dan doa untuk mempelai" 
+                                    class="form-control">
+                            </div>
+        
+                            <button class="btn btn-primary">Kirim Ucapan</button>
+                        </form>
+                        <!-- end of form ucapan -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of section-6 -->
+
+        <!-- section-7 : contains messages -->
+        <section id="section-7">
+            <div class="container-xxl mb-8">
+                <h2 class="font-type-secondary fw-bold text-dark text-center mb-8 mb-lg-10">Ucapan dan Doa untuk Pengantin</h2>
+                
+                <div class="pl-lg-10">
+                    <div id="tinyslider-container-messages" class="row">
+                        <div class="col-auto">
+                            <div class="card bg-black-500">
+                                <div class="card-body text-white">
+                                    <h6 class="fw-light text-height-2 mb-4">
+                                        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat facilisi quam integer massa dui. Vitae purus id nibh pellentesque. Ac, sit elit sed id ut amet risus. At condimentum volutpat a neque nulla vestibulum a, risus etiam.”
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <div class="obj-fit obj-fit-cover w-5rem h-5rem">
+                                                <img src="_assets/img/icons/avatar.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col pt-2">
+                                            <h6 class="fw-bold">Kristin Watson</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="card bg-black-500">
+                                <div class="card-body text-white">
+                                    <h6 class="fw-light text-height-2 mb-4">
+                                        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat facilisi quam integer massa dui. Vitae purus id nibh pellentesque. Ac, sit elit sed id ut amet risus. At condimentum volutpat a neque nulla vestibulum a, risus etiam.”
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <div class="obj-fit obj-fit-cover w-5rem h-5rem">
+                                                <img src="_assets/img/icons/avatar.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col pt-2">
+                                            <h6 class="fw-bold">Kristin Watson</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="card bg-black-500">
+                                <div class="card-body text-white">
+                                    <h6 class="fw-light text-height-2 mb-4">
+                                        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat facilisi quam integer massa dui. Vitae purus id nibh pellentesque. Ac, sit elit sed id ut amet risus. At condimentum volutpat a neque nulla vestibulum a, risus etiam.”
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <div class="obj-fit obj-fit-cover w-5rem h-5rem">
+                                                <img src="_assets/img/icons/avatar.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col pt-2">
+                                            <h6 class="fw-bold">Kristin Watson</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="card bg-black-500">
+                                <div class="card-body text-white">
+                                    <h6 class="fw-light text-height-2 mb-4">
+                                        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat facilisi quam integer massa dui. Vitae purus id nibh pellentesque. Ac, sit elit sed id ut amet risus. At condimentum volutpat a neque nulla vestibulum a, risus etiam.”
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <div class="obj-fit obj-fit-cover w-5rem h-5rem">
+                                                <img src="_assets/img/icons/avatar.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col pt-2">
+                                            <h6 class="fw-bold">Kristin Watson</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="card bg-black-500">
+                                <div class="card-body text-white">
+                                    <h6 class="fw-light text-height-2 mb-4">
+                                        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat facilisi quam integer massa dui. Vitae purus id nibh pellentesque. Ac, sit elit sed id ut amet risus. At condimentum volutpat a neque nulla vestibulum a, risus etiam.”
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <div class="obj-fit obj-fit-cover w-5rem h-5rem">
+                                                <img src="_assets/img/icons/avatar.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col pt-2">
+                                            <h6 class="fw-bold">Kristin Watson</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div id="tinyslider-controls-messages" class="row gx-0 justify-content-center">
+                    <div class="col-auto">
+                        <button class="btn btn-primary p-3 rounded-0">
+                            <img src="_assets/img/icons/arrow-left.svg" class="w-3rem" alt="">
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary p-3 rounded-0">
+                            <img src="_assets/img/icons/arrow-right.svg" class="w-3rem" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="container text-center" style="margin-top: 20rem;">
+                <h5 class="mb-8">Terimakasih atas doa restunya</h5>
+                <h2 class="font-type-secondary">John & Jane</h2>
+            </div>
+        </section>
+        <!-- end of section-7 -->
+    </section>
+    <!-- end of section-wrapper-2 -->
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm mb-3 mb-md-0">Copyright Levidio Wedding - All Rights Reserved</div>
+                <div class="col-sm-auto">info@rootpixel.net</div>
+            </div>
+        </div>
+    </footer>
+
+
+    <button id="btn-play" class="btn btn-icon btn-icon-page">
+        <i class="ri ri-volume-high"></i>
+    </button>
+    <a href="#index" id="btn-to-top" class="btn btn-icon btn-icon-page page-scroll">
+        <i class="ri ri-arrow-up"></i>
+    </a>
+
+
+    <!-- hidden : audio -->
+    <audio controls id="audio" class="d-none" style="visibility: hidden;">
+        <source src="_assets/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- JS -->
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- Countdown -->
+    <script src="https://cdn.jsdelivr.net/npm/timezz@6.1.0/dist/timezz.min.js"></script>
+    <!-- Lightgallery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js" integrity="sha512-b4rL1m5b76KrUhDkj2Vf14Y0l1NtbiNXwV+SzOzLGv6Tz1roJHa70yr8RmTUswrauu2Wgb/xBJPR8v80pQYKtQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Aos Animation os scroll -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Anime js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Tiny slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <!-- App -->
+    <script src="_assets/js/app.js"></script>
+</body>
 </html>
