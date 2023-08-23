@@ -1,0 +1,176 @@
+@font-face {
+    font-family: Bellota-Regular;
+    src: url('../fonts/Bellota/Bellota-Regular.ttf');
+}
+
+@font-face {
+    font-family: Bellota-Bold;
+    src: url('../fonts/Bellota/Bellota-Bold.ttf');
+}
+
+* {
+    background-color: #0b0b0b;
+    color: #ffffff;
+    font-family: 'Bellota', cursive;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 26pt;
+    padding: 20px;
+    margin: 0;
+}
+
+h1 {
+    font-size: 15pt;
+    text-align: center;
+    padding: 18px 0 18px 0;
+    margin: 0 0 10px 0;
+}
+
+h1 span {
+    border: 8px solid rgb(189, 70, 255);
+    border-radius: 8px;
+    background-image: url('https://media.giphy.com/media/KVZWZQoS0yqfIiTAKq/giphy.gif');
+    padding: 12px;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+.img-circle {
+    border: 8px solid rgb(189, 70, 255);
+    border-radius: 50%;
+}
+
+.section {
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+
+#header img {
+    display: block;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+
+#header p {
+    font-size: 60pt;
+    padding-top: 8px;
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.quote {
+    font-size: 12pt;
+    text-align: right;
+    margin-top: 10px;
+    color: rgb(189, 70, 255)
+}
+
+#res {
+    text-align: center;
+    margin: 50px auto;
+}
+
+#res a {
+    margin: 20px 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.selected {
+    font-weight: bold;
+    color: rgb(189, 70, 255);
+}
+
+li {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+progress {
+    width: 70%;
+    height: 20px;
+    color: rgb(189, 70, 255);
+}
+
+progress::-webkit-progress-value {
+    background: rgb(189, 70, 255);
+}
+
+iframe,
+audio {
+    display: block;
+    margin: 0 auto;
+    border: 3px solid rgb(189, 70, 255);
+    border-radius: 10px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: rgb(189, 70, 255);
+}
+
+input {
+    text-align: center;
+    font-size: 25pt;
+    border: none;
+    border-radius: 12px;
+    padding: 30px 8%;
+    margin: 20px 5px 10px 5px;
+}
+
+form {
+    text-align: center;
+    font-size: 30pt;
+    font-family: Helvetica;
+    font-weight: 500;
+    margin: 10% 15% 8% 15%;
+    border-radius: 12px;
+}
+
+#insta-image {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border: 5px solid rgb(189, 70, 255);
+    border-radius: 50%;
+    margin: auto;
+    margin-top: -75px;
+}
+
+#contacts {
+    text-align: center;
+}
+
+#contacts img {
+    height: 150px;
+    width: 150px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+#contacts a {
+    text-decoration: none;
+}
+
+#contacts img:hover {
+    opacity: 0.8;
+}
+
+.copyright {
+    font-size: 8pt;
+    text-align: right;
+    padding-bottom: 10px;
+}
