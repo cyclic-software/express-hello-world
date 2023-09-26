@@ -19,7 +19,17 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 50px;
   animation:
-  animated-text 1.2s steps(17, end) 1s 1 normal both
+    animated-text 1.2s steps(17, end) 1s 1 normal both
+}
+
+.bg-violet {
+  background-color: rgb(139 92 246);
+  color: white;
+}
+
+.bg-violet:hover {
+  background-color: rgb(109 40 217);
+  color: white;
 }
 
 /* text animation */
@@ -27,6 +37,7 @@ body {
   from {
     width: 0;
   }
+
   to {
     width: 100%;
   }
