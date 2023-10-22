@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cyclic-software/express-hello-world.git"
+    "url": "git+https://github.com/chpsalesforce/HACKATHON_WWC_Codebase.git"
   },
   "author": "Cyclic Software",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cyclic-software/express-hello-world/issues"
   },
-  "homepage": "https://github.com/cyclic-software/express-hello-world#readme",
+  "homepage": "https://github.com/chpsalesforce/HACKATHON_WWC_Codebase.git/index.html",
   "dependencies": {
     "express": "^4.18.2"
   },
