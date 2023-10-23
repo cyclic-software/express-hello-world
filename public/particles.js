@@ -1,111 +1,40 @@
-//particles
-particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 355,
-      "density": {
-        "enable": true,
-        "value_area": 789.1476416322727
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 0.48927153781200905,
-      "random": false,
-      "anim": {
-        "enable": true,
-        "speed": 0.2,
-        "opacity_min": 0,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 2,
-      "random": true,
-      "anim": {
-        "enable": true,
-        "speed": 2,
-        "size_min": 0,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": false,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 0.2,
-      "direction": "none",
-      "random": true,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
+let cursor=0
+const Typer = document.getElementById("Typer")
+setInterval(() => {
+    if (cursor===0) {
+        Typer.style="border-right: none"
+        cursor=1
+    } else {
+        Typer.style="border-right: 2px solid white"
+        cursor=0
     }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "bubble"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 400,
-        "line_linked": {
-          "opacity": 1
-        }
-      },
-      "bubble": {
-        "distance": 83.91608391608392,
-        "size": 1,
-        "duration": 3,
-        "opacity": 1,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 200,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
+}, 500)
+
+let text=1
+
+setInterval(() => {
+    if (text===1) {
+        setTimeout(() => {Typer.innerHTML="W"}, 100);
+        setTimeout(() => {Typer.innerHTML="We"}, 200);
+        setTimeout(() => {Typer.innerHTML="Web"}, 300);
+        setTimeout(() => {Typer.innerHTML="Web "}, 400);
+        setTimeout(() => {Typer.innerHTML="Web D"}, 500);
+        setTimeout(() => {Typer.innerHTML="Web De"}, 600);
+        setTimeout(() => {Typer.innerHTML="Web Deve"}, 700);
+        setTimeout(() => {Typer.innerHTML="Web Develop"}, 800);
+        setTimeout(() => {Typer.innerHTML="Web Developme"}, 900);
+        setTimeout(() => {Typer.innerHTML="Web Development"}, 1000);
+        text=2
+    } else {
+        setTimeout(() => {Typer.innerHTML="P"}, 100);
+        setTimeout(() => {Typer.innerHTML="Pr"}, 200);
+        setTimeout(() => {Typer.innerHTML="Pro"}, 300);
+        setTimeout(() => {Typer.innerHTML="Prog"}, 400);
+        setTimeout(() => {Typer.innerHTML="Progra"}, 500);
+        setTimeout(() => {Typer.innerHTML="Program"}, 600);
+        setTimeout(() => {Typer.innerHTML="Programi"}, 700);
+        setTimeout(() => {Typer.innerHTML="Programin"}, 800);
+        setTimeout(() => {Typer.innerHTML="Programing"}, 900);
+        text=1
     }
-  },
-  "retina_detect": true
-});
+}, 3000);
