@@ -1,37 +1,54 @@
-// client.js
+const chatLog = document.getElementById('chat-log');
+const userInput = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
 
-// Функция для добавления сообщения в список сообщений чата
-function addMessageToChat(message) {
-  const chatMessages = document.querySelector('.chat-messages');
-  const messageElement = document.createElement('div');
-  messageElement.classList.add('message');
-  messageElement.innerText = message;
-  chatMessages.appendChild(messageElement);
-}
+sendButton.addEventListener('click', sendMessage);
 
-// Функция для отправки сообщения на сервер
-function sendMessage(message) {
-  // Здесь можно добавить логику для отправки сообщения на сервер
-  // Пример: просто добавляем сообщение в список сообщений чата
-  addMessageToChat('Вы: ' + message);
-}
-
-// Обработчик отправки формы
-function handleSubmit(event) {
-  event.preventDefault(); // Предотвращаем отправку формы
-
-  const messageInput = document.getElementById('message-input');
-  const message = messageInput.value.trim();
+function sendMessage() {
+  const message = userInput.value.trim();
 
   if (message !== '') {
-    // Отправляем сообщение
-    sendMessage(message);
+    appendMessage('user', message);
+    userInput.value = '';
 
-    // Очищаем поле ввода
-    messageInput.value = '';
+    getChatGPTResponse(message)
+      .then(reply => {
+        appendMessage('chatbot', reply);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        appendMessage('chatbot', 'An error occurred while processing the request.');
+      });
   }
 }
 
-// Привязываем обработчик отправки формы к форме чата
-const chatForm = document.getElementById('chat-form');
-chatForm.addEventListener('submit', handleSubmit);
+function appendMessage(sender, content) {
+  const messageElement = document.createElement('div');
+  messageElement.className = `message ${sender}`;
+  messageElement.textContent = content;
+
+  chatLog.appendChild(messageElement);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+function getChatGPTResponse(message) {
+  const url = 'http://localhost:3000'; // Replace with your server URL
+  const apiKey = 'sk-LHH8z2N9GfY6oz2hwsRzVGhlQi5BSQk91va2dYXF8tLYsu6V'; // Replace with your API key
+
+  return new Promise((resolve, reject) => {
+    axios.get(url, {
+      params: {
+        message: message
+      },
+      headers: {
+        'Authorization': `Bearer ${apiKey}`
+      }
+    })
+    .then(response => {
+      resolve(response.data.reply);
+    })
+    .catch(error => {
+      reject(error);
+    });
+  });
+}
