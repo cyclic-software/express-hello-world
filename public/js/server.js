@@ -22,6 +22,9 @@ app.get('/chat', (req, res) => {
   res.sendFile(__dirname + '/chat.html');
 });
 
+const data = await response.json();
+console.log('Response data:', data);
+
 const response = await axios.post('https://api.theb.ai/v1', {
   model: 'gpt-3.5',
   messages: [{ role: 'system', content: 'You are a helpful assistant.' }, { role: 'user', content: message }],
