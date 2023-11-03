@@ -15,7 +15,7 @@ chatForm.addEventListener('submit', (event) => {
         "content": userMessage
       }
     ],
-    "stream": true // Изменено на "stream": true
+    "stream": true
   };
   
   const requestOptions = {
@@ -28,23 +28,10 @@ chatForm.addEventListener('submit', (event) => {
   };
   
   fetch('https://api.theb.ai/v1/chat/completions', requestOptions)
-    .then(response => response.body)
-    .then(stream => {
-      const reader = stream.getReader();
-      
-      reader.read().then(function processText({ done, value }) {
-        if (done) return;
-        
-        const responseText = new TextDecoder().decode(value);
-        const responseJson = JSON.parse(responseText);
-        
-        if (responseJson.choices && responseJson.choices.length > 0) {
-          const assistantReply = responseJson.choices[0].message.content;
-          displayMessage('assistant', assistantReply);
-        }
-        
-        reader.read().then(processText);
-      });
+    .then(response => response.json())
+    .then(data => {
+      const assistantReply = data.choices[0].message.content;
+      displayMessage('assistant', assistantReply);
     })
     .catch(error => {
       console.error('Error:', error);
@@ -55,16 +42,6 @@ chatForm.addEventListener('submit', (event) => {
 
 function displayMessage(role, content) {
   const messageElement = document.createElement('p');
-  messageElement.innerHTML = `<strong>${role}: </strong>`;
+  messageElement.innerHTML = `<strong>${role}: </strong>${content}`;
   chatLog.appendChild(messageElement);
-  
-  let i = 0;
-  const timer = setInterval(() => {
-    if (i >= content.length) {
-      clearInterval(timer);
-    } else {
-      messageElement.innerHTML += content.charAt(i);
-      i++;
-    }
-  }, 50); // Изменено на 50 миллисекунд (можете изменить этот интервал по своему усмотрению)
 }
