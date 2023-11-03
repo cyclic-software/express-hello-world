@@ -39,6 +39,9 @@ function displayChatMessage(message) {
   chatMessages.appendChild(messageElement);
 }
 
+const response = jsonResponse.response;
+console.log(response); // Вывод: "Привет, я чатбот!"
+
 // Обработчик отправки формы
 async function handleSubmit(event) {
   event.preventDefault(); // Предотвращаем отправку формы
