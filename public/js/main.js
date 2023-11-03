@@ -11,7 +11,7 @@ function getChatGPTResponse(message) {
         message: message
       },
       headers: {
-        'Authorization': `Bearer ${apiKey}`
+        'Authorization': `Bearer ${sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY}`
       }
     })
     .then(response => {
