@@ -20,7 +20,7 @@ let config = {
   url: 'https://api.theb.ai/v1/chat/completions',
   // url: 'https://api.baizhi.ai/v1/chat/completions',
   headers: {
-    'Authorization': 'Bearer $API_KEY',
+    'Authorization': 'Bearer sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY',
     'Content-Type': 'application/json'
   },
   data : data
