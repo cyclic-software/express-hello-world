@@ -26,6 +26,9 @@ async function sendMessageToChatGPT(message) {
   }
 }
 
+const response = jsonResponse.response;
+console.log(response); // Вывод: "Привет, я чатбот!"
+
 function getChatGPTResponse(message) {
   const url = 'https://chatgpt.cyclic.app/'; // Replace with your server URL
 
