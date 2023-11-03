@@ -3,7 +3,7 @@
 // Функция отправки сообщения на сервер Chat GPT и получения ответа
 async function sendMessageToChatGPT(message) {
   try {
-    const response = await fetch('https://chatgpt.cyclic.app/', {
+    const response = await fetch('127.0.0.1', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
