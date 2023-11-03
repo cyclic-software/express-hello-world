@@ -43,7 +43,7 @@ function getChatGPTResponse(message) {
         message: message
       },
       headers: {
-         'Authorization': 'ApiKEY TOKEN sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY'
+         'Authorization': 'ApiKEY sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY'
       }
     })
     .then(response => {
