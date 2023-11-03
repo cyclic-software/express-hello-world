@@ -13,8 +13,8 @@ app.get('/fetchChatCompletion', async (req, res) => {
 
   try {
     const result = await openai.chat.completions.create({
-      model: 'claude-instant-1',
-      stream: false,
+      model: 'gpt-3.5-turbo',
+      stream: true,
       model_params: {
         temperature: 0.8
       },
