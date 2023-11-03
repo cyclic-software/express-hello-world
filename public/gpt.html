@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+ <meta charset="UTF-8">
   <title>Chat GPT</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Chat GPT</h1>
-  
-  <form id="chatForm">
-    <label for="userMessage">User Message:</label>
-    <input type="text" id="userMessage" required>
-    <button type="submit">Send</button>
-  </form>
+  <div id="chatContainer">
+    <div id="chatLog"></div>
 
-  <div id="chatLog"></div>
-  
+    <form id="chatForm">
+      <input type="text" id="userMessage" placeholder="Введите сообщение..."/>
+      <button type="submit" id="sendMessageButton">Отправить</button>
+    </form>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
