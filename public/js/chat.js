@@ -51,6 +51,9 @@ function handleChatFormSubmit(event) {
   }
 }
 
+const response = jsonResponse.response;
+console.log(response); // Вывод: "Привет, я чатбот!"
+
 // Функция добавления сообщения в окно чата
 function appendMessageToChat(message) {
   const chatMessages = document.querySelector('.chat-messages');
