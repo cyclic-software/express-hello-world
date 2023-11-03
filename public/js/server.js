@@ -28,7 +28,7 @@ const response = await axios.post('https://api.theb.ai/v1', {
 }, {
   headers: {
     'Content-Type': 'application/json',
-     'Authorization': 'ApiKEY sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY'
+     'Authorization': 'Bearer sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY'
   },
 });
 
