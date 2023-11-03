@@ -21,7 +21,7 @@ chatForm.addEventListener('submit', (event) => {
   const requestOptions = {
     method: 'POST',
     headers: {
-      'Authorization': 'Bearer sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY, // Замените $API_KEY на ваш ключ авторизации
+      'Authorization': 'Bearer sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY', // Замените $API_KEY на ваш ключ авторизации
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(requestBody)
@@ -31,7 +31,6 @@ chatForm.addEventListener('submit', (event) => {
     .then(response => response.json())
     .then(data => {
       const assistantReply = data.choices[0].message.content;
-      displayMessage('user', userMessage);
       displayMessage('assistant', assistantReply);
     })
     .catch(error => {
@@ -43,7 +42,6 @@ chatForm.addEventListener('submit', (event) => {
 
 function displayMessage(role, content) {
   const messageElement = document.createElement('p');
-  messageElement.innerHTML = content;
-  messageElement.classList.add(role + 'Message'); // Добавляем класс role + 'Message' для применения нужного CSS-стиля
+  messageElement.innerHTML = `<strong>${role}: </strong>${content}`;
   chatLog.appendChild(messageElement);
 }
