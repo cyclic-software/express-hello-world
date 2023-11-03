@@ -7,7 +7,7 @@ const API_KEY = 'sk-LHH8z2N9GfY6oz2hwsRzVGhlQi5BSQk91va2dYXF8tLYsu6V';
 // Функция для отправки сообщения на сервер Chat GPT и получения ответа
 async function sendMessageToChatGPT(message) {
   try {
-    const response = await fetch('https://api.chatgpt.com/ask', {
+    const response = await fetch('127.0.0.1', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
