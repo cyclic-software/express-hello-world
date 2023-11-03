@@ -26,6 +26,12 @@ async function sendMessageToChatGPT(message) {
   }
 }
 
+function getChatGPTResponse(message) {
+  const url = 'https://chatgpt.cyclic.app/'; // Replace with your server URL
+
+  // остальной код
+}
+
 // Обработчик отправки сообщения из формы чата
 function handleChatFormSubmit(event) {
   event.preventDefault();
