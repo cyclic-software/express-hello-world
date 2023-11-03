@@ -15,6 +15,7 @@
 /* Стили для формы ввода сообщения */
 #chatForm {
   display: flex;
+  margin-bottom: 10px;
 }
 
 #userMessage {
@@ -36,7 +37,11 @@
 
 /* Стили для сообщений от пользователя */
 p.userMessage {
-  color: #333;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  display: inline-block;
 }
 
 /* Стили для сообщений от ассистента */
