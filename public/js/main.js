@@ -2,7 +2,7 @@
 // Common JavaScript code for both index.html and chat.html
 
 function getChatGPTResponse(message) {
-  const url = '127.0.0.1'; // Replace with your server URL
+  const url = 'https://chatgpt.cyclic.app'; // Replace with your server URL
   const apiKey = 'sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY'; // Replace with your API key
 
   return new Promise((resolve, reject) => {
