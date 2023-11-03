@@ -1,6 +1,7 @@
 const chatLog = document.getElementById('chat-log');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
+import axios from 'axios';
 
 sendButton.addEventListener('click', sendMessage);
 
@@ -30,6 +31,7 @@ function appendMessage(sender, content) {
   chatLog.appendChild(messageElement);
   chatLog.scrollTop = chatLog.scrollHeight;
 }
+
 
 function getChatGPTResponse(message) {
   const url = 'https://chatgpt.cyclic.app'; // Replace with your server URL
