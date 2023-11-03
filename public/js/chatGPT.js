@@ -2,7 +2,7 @@
 // chatGPT.js
 
 // API-ключ от Chat GPT
-const API_KEY = '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';
+const API_KEY = 'sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY';
 
 // Функция для отправки сообщения на сервер Chat GPT и получения ответа
 async function sendMessageToChatGPT(message) {
