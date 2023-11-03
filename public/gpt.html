@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Простой сайт для общения с Chat GPT</title>
+  <meta charset="UTF-8">
+  <title>Chat GPT</title>
 </head>
 <body>
-    <h1>Chat GPT</h1>
-    <div id="messages"></div>
-    <input type="text" id="userInput" placeholder="Введите сообщение..." />
-    <button onclick="sendMessage()">Отправить</button>
+  <h1>Chat GPT</h1>
+  
+  <form id="chatForm">
+    <label for="userMessage">User Message:</label>
+    <input type="text" id="userMessage" required>
+    <button type="submit">Send</button>
+  </form>
 
-        <script src="script.js"></script>
-    
+  <div id="chatLog"></div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
