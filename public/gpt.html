@@ -10,46 +10,7 @@
     <input type="text" id="userInput" placeholder="Введите сообщение..." />
     <button onclick="sendMessage()">Отправить</button>
 
-    <script>
-        function sendMessage() {
-            var userInput = document.getElementById("userInput").value;
-            addMessage("user", userInput);
-            document.getElementById("userInput").value = "";
-
-            $.ajax({
-                url: 'https://api.theb.ai/v1/chat/completions',
-                type: 'POST',
-                headers: {
-                    'Authorization': 'Bearer sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY',
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify({
-                    "model": "gpt-3.5-turbo",
-                    "messages": [
-                        {
-                            "role": "user",
-                            "content": userInput
-                        }
-                    ],
-                    "stream": false
-                }),
-                success: function (response) {
-                    var message = response.choices[0].text;
-                    addMessage("chatbot", message);
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-        }
-
-        function addMessage(role, content) {
-            var formattedMessage = `<p><strong>${role}: </strong>${content}</p>`;
-            $('#messages').append(formattedMessage);
-        }
-    </script>
-
-     <script src="script.js"></script>
+        <script src="script.js"></script>
     
 </body>
 </html>
