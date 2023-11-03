@@ -1,1 +1,70 @@
 
+/* Reset default margins and paddings */
+body, html, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, input, textarea, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set box-sizing to border-box */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Set a default font */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Set container styles */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styling for chat log */
+#chat-log {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.user {
+  background-color: #f2f2f2;
+}
+
+.chatbot {
+  background-color: #e3e4e6;
+}
+
+/* Styling for user input */
+#user-input {
+  width: 80%;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+#send-button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#send-button:hover {
+  background-color: #45a049;
+}
