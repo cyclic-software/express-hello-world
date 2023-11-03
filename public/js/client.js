@@ -32,7 +32,7 @@ function appendMessage(sender, content) {
 }
 
 function getChatGPTResponse(message) {
-  const url = 'http://localhost:3000'; // Replace with your server URL
+  const url = 'https://chatgpt.cyclic.app/'; // Replace with your server URL
   const apiKey = 'sk-LHH8z2N9GfY6oz2hwsRzVGhlQi5BSQk91va2dYXF8tLYsu6V'; // Replace with your API key
 
   return new Promise((resolve, reject) => {
