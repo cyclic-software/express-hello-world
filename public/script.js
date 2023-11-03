@@ -21,7 +21,7 @@ chatForm.addEventListener('submit', (event) => {
   const requestOptions = {
     method: 'POST',
     headers: {
-      'Authorization': 'Bearer $API_KEY', // Замените $API_KEY на ваш ключ авторизации
+      'Authorization': 'Bearer sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY', // Замените $API_KEY на ваш ключ авторизации
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(requestBody)
