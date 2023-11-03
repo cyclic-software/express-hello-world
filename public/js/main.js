@@ -3,7 +3,7 @@
 
 function getChatGPTResponse(message) {
   const url = '127.0.0.1'; // Replace with your server URL
-  const apiKey = 'sk-LHH8z2N9GfY6oz2hwsRzVGhlQi5BSQk91va2dYXF8tLYsu6V'; // Replace with your API key
+  const apiKey = 'sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY'; // Replace with your API key
 
   return new Promise((resolve, reject) => {
     axios.get(url, {
