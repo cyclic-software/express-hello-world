@@ -1,40 +1,64 @@
-function sendMessage() {
-    var userInput = document.getElementById("userInput").value;
-    addMessage("user", userInput);
-    document.getElementById("userInput").value = "";
+const axiosConfig = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://api.theb.ai/v1/models',
+  headers: {
+    'Authorization': 'Bearer sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY' // Замените $API_KEY на ваш ключ авторизации
+  }
+};
 
-    var apiKey = "sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY"; // Замените YOUR_API_KEY на фактический ключ API
+axios.request(axiosConfig)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
-    fetch('https://api.theb.ai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-            'Authorization': 'Bearer ' + apiKey,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "model": "gpt-3.5-turbo",
-            "messages": [
-                {
-                    "role": "user",
-                    "content": userInput
-                }
-            ],
-            "stream": false
-        })
-    })
+const chatForm = document.getElementById('chatForm');
+const userMessageInput = document.getElementById('userMessage');
+const chatLog = document.getElementById('chatLog');
+
+chatForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const userMessage = userMessageInput.value;
+
+  const requestBody = {
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {
+        "role": "user",
+        "content": userMessage
+      }
+    ],
+    "stream": false
+  };
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY', // Замените $API_KEY на ваш ключ авторизации
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestBody)
+  };
+
+  fetch('https://api.theb.ai/v1/chat/completions', requestOptions)
     .then(response => response.json())
     .then(data => {
-        var message = data.choices[0].text;
-        addMessage("chatbot", message);
+      const assistantReply = data.choices[0].message.content;
+      displayMessage('assistant', assistantReply);
     })
-    .catch(error => console.log(error));
-}
+    .catch(error => {
+      console.error('Error:', error);
+    });
 
-function addMessage(role, content) {
-    var messagesDiv = document.getElementById("messages");
-    var formattedMessage = `<p><strong>${role}: </strong>${content}</p>`;
-    messagesDiv.innerHTML += formattedMessage;
-}
+  userMessageInput.value = '';
+});
 
-var sendButton = document.getElementById("sendButton");
-sendButton.addEventListener("click", sendMessage);
+function displayMessage(role, content) {
+  const messageElement = document.createElement('p');
+  messageElement.innerHTML = `<strong>${role}: </strong>${content}`;
+  chatLog.appendChild(messageElement);
+}
