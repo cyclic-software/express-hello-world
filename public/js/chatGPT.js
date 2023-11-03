@@ -58,6 +58,9 @@ async function handleSubmit(event) {
   }
 }
 
+const response = jsonResponse.response;
+console.log(response); // Вывод: "Привет, я чатбот!"
+
 // Привязываем обработчик отправки формы к форме чата
 const chatForm = document.getElementById('chat-form');
 chatForm.addEventListener('submit', handleSubmit);
