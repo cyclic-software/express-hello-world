@@ -1,1 +1,41 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat with Chat GPT</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+  <header>
+    <h1>Chat with Chat GPT</h1>
+  </header>
+
+  <div class="container">
+    <div id="chat-log"></div>
+    <input type="text" id="user-input" autofocus />
+    <button id="send-button">Send</button>
+  </div>
+
+  <main>
+    <!-- Контейнер для отображения сообщений -->
+    <div class="chat-container">
+      <div class="chat-messages">
+        <!-- Здесь будут отображаться сообщения чата -->
+      </div>
+      <form id="chat-form">
+        <!-- Поле ввода сообщения -->
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <!-- Кнопка отправки сообщения -->
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Импорт скриптов -->
+  <script src="js/main.js"></script> <!-- Содержит общие функции и взаимодействие с DOM -->
+  <script src="js/chat.js"></script> <!-- Содержит функциональность чата и отправку сообщений -->
+  <script src="js/server.js"></script> <!-- Содержит взаимодействие с сервером -->
+  <script src="js/chatGPT.js"></script> <!-- Содержит функции для работы с Chat GPT -->
+  <script src="js/client.js"></script> <!-- Содержит настройки клиента и подключение к серверу -->
+</body>
+</html>
