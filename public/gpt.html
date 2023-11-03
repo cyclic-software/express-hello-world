@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Chat GPT</title>
+    <title>Простой сайт для общения с Chat GPT</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <h1>Chat GPT</h1>
-  
-  <form id="chatForm">
-    <label for="userMessage">User Message:</label>
-    <input type="text" id="userMessage" required>
-    <button type="submit">Send</button>
-  </form>
+    <h1>Chat GPT</h1>
+    <div id="messages"></div>
+    <input type="text" id="userInput" placeholder="Введите сообщение..." />
+    <button onclick="sendMessage()">Отправить</button>
 
-  <div id="chatLog"></div>
-  
-  <script src="script.js"></script>
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("userInput").value;
+            addMessage("user", userInput);
+            document.getElementById("userInput").value = "";
+
+            $.ajax({
+                url: 'https://api.theb.ai/v1/chat/completions',
+                type: 'POST',
+                headers: {
+                    'Authorization': 'Bearer $API_KEY',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify({
+                    "model": "gpt-3.5-turbo",
+                    "messages": [
+                        {
+                            "role": "user",
+                            "content": userInput
+                        }
+                    ],
+                    "stream": false
+                }),
+                success: function (response) {
+                    var message = response.choices[0].text;
+                    addMessage("chatbot", message);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function addMessage(role, content) {
+            var formattedMessage = `<p><strong>${role}: </strong>${content}</p>`;
+            $('#messages').append(formattedMessage);
+        }
+    </script>
 </body>
 </html>
