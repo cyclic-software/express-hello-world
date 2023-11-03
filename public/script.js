@@ -1,20 +1,3 @@
-const axiosConfig = {
-  method: 'get',
-  maxBodyLength: Infinity,
-  url: 'https://api.theb.ai/v1/models',
-  headers: {
-    'Authorization': 'Bearer sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY' // Замените $API_KEY на ваш ключ авторизации
-  }
-};
-
-axios.request(axiosConfig)
-  .then((response) => {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-
 const chatForm = document.getElementById('chatForm');
 const userMessageInput = document.getElementById('userMessage');
 const chatLog = document.getElementById('chatLog');
