@@ -15,7 +15,7 @@ chatForm.addEventListener('submit', (event) => {
         "content": userMessage
       }
     ],
-    "stream": false
+    "stream": true
   };
   
   const requestOptions = {
