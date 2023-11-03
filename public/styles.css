@@ -1,1 +1,45 @@
+/* Стили для контейнера чата */
+#chatContainer {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
 
+/* Стили для сообщений чата */
+#chatLog {
+  margin-bottom: 10px;
+}
+
+/* Стили для формы ввода сообщения */
+#chatForm {
+  display: flex;
+}
+
+#userMessage {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+#sendMessageButton {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Стили для сообщений от пользователя */
+p.userMessage {
+  color: #333;
+}
+
+/* Стили для сообщений от ассистента */
+p.assistantMessage {
+  color: #1E90FF;
+}
