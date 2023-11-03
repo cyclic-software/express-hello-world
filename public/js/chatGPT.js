@@ -11,7 +11,7 @@ async function sendMessageToChatGPT(message) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY}` // Подставляем API-ключ в заголовок запроса
+       'Authorization': `Bearer 'sk-76ADBqR4Eqsto6K8p8DNVGhlQi5BSQBGIxu8MKv2E6mla1KY'`
       },
       body: JSON.stringify({
         message: message
