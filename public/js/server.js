@@ -23,7 +23,7 @@ app.get('/chat', (req, res) => {
 });
 
 const response = await axios.post('https://api.theb.ai/v1', {
-  model: 'gpt-3.5-turbo',
+  model: 'gpt-3.5',
   messages: [{ role: 'system', content: 'You are a helpful assistant.' }, { role: 'user', content: message }],
 }, {
   headers: {
