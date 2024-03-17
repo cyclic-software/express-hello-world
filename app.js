@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const path = require("path");
 const app = express()
@@ -23,6 +24,35 @@ var options = {
   redirect: false
 }
 app.use(express.static('public', options))
+
+
+const morgan = require('morgan');
+
+// const fs = require('fs');
+
+const sendPrompt = require('./controllers/sendPrompt');
+const getChatBison=require('./controllers/getChatBison');
+const authenticate = require('./controllers/auth');
+const getAdminLogin = require('./controllers/getAdminLogin');
+const getAdminDash = require('./controllers/getAdminDash');
+
+// const logStream = fs.createWriteStream(path.join(__dirname, 'console.log'), { flags: 'a' });
+
+// console.log = function (message) {
+//   process.stdout.write(`${message}\n`);
+//   logStream.write(`${new Date().toISOString()} - ${message}\n`);
+// };
+
+app.use(morgan('combined'));
+app.use(express.json());
+app.set('trust proxy', true);
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', getChatBison);
+app.post('/send_prompt', sendPrompt);
+app.get('/admin', getAdminLogin);
+app.get('/getAdmin', authenticate, getAdminDash);
+
+
 
 // #############################################################################
 // Catch all handler for all other request.

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-panel login</title>
+</head>
+<style>
+    *{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        
+    }
+    *::-webkit-scrollbar{
+        background-color: rgb(208, 208, 208);
+        width: 1px;
+    }
+    *::-webkit-scrollbar-thumb{
+        background-color: rgb(0, 0, 0);
+        width: 2px;
+    }
+    main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80svh;
+    }
+    #logIn{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #password{
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    #logIn button{
+        border-radius: 5px;
+        background-color: #000;
+        color: white;
+        padding: 8px 6px;
+        align-self: center;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .container{
+        width: 90%;
+        /* overflow: scroll; */
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+    }
+    .chat{
+        display: flex;
+        flex-direction: column;
+        border: 1px grey solid;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 10px;
+        z-index: 10;
+    }
+    .top{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 0.8em;
+        color: #888;
+    }
+    .mid{
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: left;
+        margin-bottom: 10px;
+    }
+    .low{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 0.6em;
+        color: #888;
+    }
+    .info{
+        min-width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s ease-in-out;
+
+    }
+    .userInfo{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background-color: white;
+        width: 80px;
+        border-radius: 10px;
+        transition: all 1s ease-in-out;
+        padding: 10px;
+    }
+    .info:hover .userInfo{
+        
+        box-shadow: 2px 4px 4px 0px #c2bfbf;
+        border: 1px #828282 solid;
+        
+    }
+    #prompts,#resps{
+        background-color: rgb(203, 227, 247);
+        border-radius: 8px;
+        padding: 5px 10px;
+        margin:5px 0px; 
+        width: 95%;
+        word-wrap: break-word;
+        max-height: 200px;
+        overflow: auto;
+    }
+    #loading{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+        flex-direction: column;
+    }
+    #resps{
+        background-color: rgb(253, 253, 253);
+    }
+    #your_pic img,#ai img{
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    /* HTML: <div class="loader"></div> */
+    .loader {
+        width: 100px;
+        aspect-ratio: 1;
+        padding: 10px;
+        box-sizing: border-box;
+        display: grid;
+        background: #fff;
+        filter: blur(5px) contrast(10);
+        mix-blend-mode: darken;
+    }
+    .loader:before,
+    .loader:after{
+        content: "";
+        grid-area: 1/1;
+        background:
+        linear-gradient(#000 0 0) left,
+        linear-gradient(#000 0 0) right;
+        background-size: 20px 40px;
+        background-origin: content-box;
+        background-repeat: no-repeat;
+    }
+    .loader:after {
+        height: 20px;
+        width:  20px;
+        margin: auto 0;
+        border-radius: 50%;
+        background: #000;
+        animation: l10 1s infinite;
+    }
+    @keyframes l10{
+        90%,100% {transform: translate(300%)}
+    }
+
+</style>
+<body>
+    <main>
+        <form id="logIn">
+            <input type="text" id="password" placeholder="Enter admin password">
+            <button type="submit">Log in</button>
+        </form>
+
+        <div id="loading">
+            <div class="loader"></div>
+            <div class="load-status">Loading...</div>
+        </div>
+    </main>
+    <script>
+        const loading = document.querySelector('#loading');
+        
+        const loader=document.querySelector('.loader');
+        const loadStatus = document.querySelector('.load-status')
+        const loginForm = document.querySelector('form');
+        loginForm.addEventListener('submit',(event)=>{
+            loginForm.style.display="none";
+            loading.style.display="flex";
+            loadStatus.innerHTML="Fetching data from database";
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            console.log("Password:",password)
+            fetch('/getAdmin',{
+                headers:{
+                    'admin_password':password
+                },
+                method:'GET'
+            })
+            .then((res)=>{
+                if(res.status==401){
+                    console.log(res);
+                    loading.innerHTML=`${res.status} : ${res.statusText}<br><a href="/admin">Try Again</a>`
+                    
+                }
+                loadStatus.innerHTML="Loading data"; 
+                return res.json();
+            })
+            .then((data)=>{
+                const body = document.querySelector('body');
+                const html = `
+                    <h1>Welcome to Admin panel</h1>
+                    <br>
+                    <div class="container"></div>
+                `;
+                body.innerHTML=html;
+                const chats = data;
+                console.log(`chats: ${chats}`);
+                //const tbody=document.querySelector('#table_body');
+                const container=document.querySelector('.container');
+                for(let i=0;i<chats.prompts.length;i++){
+                    
+                    const dateString = data.dates[i];
+                    const dateTime = new Date(dateString);
+                    const fullDate = dateTime.toDateString();
+                    const fullTime = dateTime.toTimeString();
+                    const tr = `
+                    
+                    <div class="chat">
+                        <div class="top">
+                            <div class="sr">${i+1}</div>
+                            <div class="userISP">
+                                <a href=https://maps.google.com/maps?q=${data.lats[i]},${data.lons[i]}&hl=es&z=14&amp; target="_blank" >
+                                    <img src="./location.png" width="40px" height="40px" />
+                                </a>
+                            </div>
+                            <div class="ip">${data.ipAdds[i]}</div>
+                        </div>
+                        <div class="mid">
+                            <div id="prompts">
+                                <div id="your_pic">
+                                    <img width="36" height="36" src="https://i.pinimg.com/736x/13/21/97/1321974a40b4098834ba034dead25f90.jpg" alt="">
+                                </div>    
+                                ${data.prompts[i]}
+                            </div>
+                            <div id="resps">
+                                <div id="ai">
+                                    <img width="36" height="36" src="data:image/png;base64,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" alt="">
+                                </div>
+                                ${data.resps[i]}
+                            </div>
+                        </div>
+                        <div class="low">
+                            <div class="date">${fullDate} - ${data.cities[i]} - ${data.countries[i]}</div>
+                            <div class="time">${fullTime}</div>
+                        </div>
+                        
+                        
+                        
+                        
+                    </div>
+                    `;
+                    
+                    container.innerHTML+=tr;
+                }
+                loadStatus.innerHTML="Render Complete";
+                loading.style.display="none";
+                console.log("2");
+                //const resps = document.querySelectorAll('#resps');
+                //    resps.forEach((resp,i)=>{
+                //        resp.innerText = data.resps[i];
+                //    })
+                //const prompts = document.querySelectorAll('#prompts');
+                //    prompts.forEach((prompt,i)=>{
+                //        prompt.innerText = data.prompts[i];
+                //    })
+            })
+            
+
+        })
+    </script>
+</body>
+</html>
