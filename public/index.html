@@ -1,33 +1,195 @@
-<!doctype html>
-<html lang=en>
-  <head>
-    <meta charset=utf-8>
-    <title>Cyclic: Hello World</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/main.css">
-    <link rel="icon" href="/favicon.ico" />
-  </head>
-  <body>
-    <div id="hello-wrapper">
-      <div id="particles-js"></div>
-      <div class="content position-absolute w-100 top-0 pt-5">
-        <div class="cta">
-          <div id="hello" class="typewriter pb-3">
-            Hello World!
-          </div>
-          <a class="btn btn-primary mb-5" href="//app.cyclic.sh/api/login">Sign in to Cyclic</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mortéz World - Where darkness drips in luxury. Enter the gothic mansion of haute couture.">
+    <title>Mortéz World | Dark Luxury Fashion</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/main.css">
+    <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+    <!-- 3D Canvas -->
+    <canvas id="canvas3d"></canvas>
+
+    <!-- Lightning Flash Effect -->
+    <div id="lightning-flash"></div>
+
+    <!-- Intro Overlay -->
+    <div id="intro-overlay">
+        <div class="intro-content">
+            <h1 id="intro-title">MORTÉZ WORLD</h1>
+            <p id="intro-subtitle">Where darkness drips in luxury</p>
+            <button id="enter-button">
+                <span>Enter Mortéz World</span>
+                <div class="button-glow"></div>
+            </button>
         </div>
-        <div id="world">
-          <canvas id='rotatingGlobe' style='cursor: move;'></canvas>
-        </div>
-      </div>
+        <div class="skip-hint">Press SPACE to skip</div>
     </div>
-    <script type='text/javascript' src='//d3js.org/d3.v3.min.js'></script>
-    <script type='text/javascript' src='//d3js.org/topojson.v1.min.js'></script>
-    <script type='text/javascript' src='planetaryjs.min.js'></script>
-    <script src="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script type='text/javascript' src='particles.js'></script>
-    <script type='text/javascript' src='globe.js'></script>
-  </body>
+
+    <!-- Main UI Container -->
+    <div id="ui-container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="logo">
+                <h1>MORTÉZ</h1>
+                <span class="logo-subtitle">WORLD</span>
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="nav-link">Collections</a>
+                <a href="#" class="nav-link">Mansion</a>
+                <a href="#" class="nav-link">Experience</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Interaction Message -->
+        <div id="interaction-message" class="interaction-message"></div>
+
+        <!-- Info Panel -->
+        <div class="info-panel">
+            <div class="info-item">
+                <div class="info-icon">🏰</div>
+                <div class="info-text">
+                    <h3>The Mansion</h3>
+                    <p>Explore the gothic estate</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">🗼</div>
+                <div class="info-text">
+                    <h3>The Towers</h3>
+                    <p>Click to rotate and discover</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">🚪</div>
+                <div class="info-text">
+                    <h3>The Door</h3>
+                    <p>Enter the world within</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls Info -->
+        <div class="controls-info">
+            <h4>Controls</h4>
+            <ul>
+                <li><strong>Drag</strong> - Rotate camera</li>
+                <li><strong>Scroll</strong> - Zoom in/out</li>
+                <li><strong>Click</strong> - Interact with objects</li>
+                <li><strong>Double Click</strong> - Special actions</li>
+            </ul>
+        </div>
+
+        <!-- Audio Controls -->
+        <div class="audio-controls">
+            <button id="audio-toggle" class="audio-btn" title="Toggle Audio">
+                <span class="audio-icon">🔊</span>
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p class="tagline">"Enter Mortéz World — where darkness drips in luxury."</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">TikTok</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading Mortéz World...</p>
+        </div>
+    </div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Application Scripts -->
+    <script src="/audio.js"></script>
+    <script src="/scene.js"></script>
+    <script src="/animations.js"></script>
+    <script src="/interactions.js"></script>
+    
+    <!-- Main Application -->
+    <script>
+        // Initialize application
+        let isAudioEnabled = true;
+
+        function init() {
+            // Hide loading screen
+            const loadingScreen = document.getElementById('loading-screen');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1000);
+
+            // Initialize 3D scene
+            window.sceneAPI.init();
+            
+            // Initialize animations
+            window.animationAPI.init(window.sceneAPI);
+            
+            // Initialize interactions
+            window.interactionAPI.init(window.sceneAPI);
+            
+            // Start animation loop
+            window.sceneAPI.animate();
+
+            // Setup audio toggle
+            setupAudioToggle();
+        }
+
+        function setupAudioToggle() {
+            const audioToggle = document.getElementById('audio-toggle');
+            const audioIcon = audioToggle.querySelector('.audio-icon');
+
+            audioToggle.addEventListener('click', () => {
+                isAudioEnabled = !isAudioEnabled;
+                
+                if (isAudioEnabled) {
+                    audioIcon.textContent = '🔊';
+                    window.audioAPI.setMasterVolume(0.7);
+                    window.audioAPI.startAmbience();
+                } else {
+                    audioIcon.textContent = '🔇';
+                    window.audioAPI.setMasterVolume(0);
+                    window.audioAPI.stopAmbience();
+                }
+            });
+        }
+
+        // Start when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        // Handle visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                window.audioAPI.stopAmbience();
+            } else if (isAudioEnabled && !window.animationAPI.isIntroPlaying()) {
+                window.audioAPI.startAmbience();
+            }
+        });
+    </script>
+</body>
 </html>
